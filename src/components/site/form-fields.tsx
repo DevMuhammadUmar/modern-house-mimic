@@ -11,7 +11,7 @@ export function Field({
 }: {
   label: string;
   htmlFor: string;
-  error?: string;
+  error?: string | undefined;
   children: ReactNode;
 }) {
   return (
@@ -42,7 +42,7 @@ export function TextField({
   name: string;
   value: string;
   onChange: (v: string) => void;
-  error?: string;
+  error?: string | undefined;
   type?: string;
   placeholder?: string;
 }) {
@@ -75,7 +75,7 @@ export function TextAreaField({
   name: string;
   value: string;
   onChange: (v: string) => void;
-  error?: string;
+  error?: string | undefined;
   rows?: number;
   placeholder?: string;
 }) {
@@ -109,7 +109,7 @@ export function SelectField({
   value: string;
   onChange: (v: string) => void;
   options: string[];
-  error?: string;
+  error?: string | undefined;
   placeholder?: string;
 }) {
   return (
@@ -146,7 +146,7 @@ export function RadioField({
   value: string;
   onChange: (v: string) => void;
   options: string[];
-  error?: string;
+  error?: string | undefined;
 }) {
   return (
     <fieldset className="space-y-3">
