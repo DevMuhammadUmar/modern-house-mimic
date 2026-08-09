@@ -271,7 +271,7 @@ export function Footer() {
               loading="lazy"
               width={816}
               height={816}
-              className="size-10 object-contain brightness-0 invert"
+              className="h-12 md:h-14 w-auto object-contain"
             />
             <p
               className="text-lg tracking-[0.24em] uppercase"

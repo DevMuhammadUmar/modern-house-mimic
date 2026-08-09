@@ -21,7 +21,7 @@ export function Header() {
             alt=""
             width={816}
             height={816}
-            className="size-10 object-contain md:size-12"
+            className="h-14 md:h-16 w-auto object-contain"
           />
           <span className="flex flex-col leading-tight">
             <span

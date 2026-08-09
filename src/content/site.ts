@@ -22,7 +22,7 @@ export const company = {
   email: "admin@parkwoodproperties.ae",
   website: "www.parkwoodproperties.ae",
   websiteHref: "https://www.parkwoodproperties.ae",
-  logo,
+  logo: "/log.jpeg",
 };
 
 export const nav = [
@@ -63,7 +63,7 @@ export type Listing = {
 };
 
 export const featuredHero = {
-  image: hero,
+  image: "/hero.jpeg",
   imageAlt: "Contemporary Dubai villa with stone elevations and a reflecting pool at golden hour",
   quote: ["WE SHAPE OUR BUILDINGS,", "AND AFTERWARDS OUR BUILDINGS SHAPE US."],
   quoteAttribution: "— Winston Churchill",
@@ -209,7 +209,7 @@ export const services: Service[] = [
     title: "Buy",
     description:
       "We shortlist, view and negotiate on your behalf — from off-plan releases to resale homes in established communities.",
-    image: p1,
+    image: "/buy.jpeg",
     ctaLabel: "Talk to us",
     ctaTo: "/contact",
   },
@@ -218,7 +218,7 @@ export const services: Service[] = [
     title: "Sell",
     description:
       "Photography, copy and placement handled in-house, with a considered launch to a design-minded audience.",
-    image: p6,
+    image: "/sell.jpeg",
     ctaLabel: "Request an appraisal",
     ctaTo: "/request-appraisal",
   },
@@ -227,7 +227,7 @@ export const services: Service[] = [
     title: "Rent",
     description:
       "Leasing and letting across apartments, townhouses and villas, including tenant vetting and contract administration.",
-    image: p2,
+    image: "/rent.jpeg",
     ctaLabel: "Talk to us",
     ctaTo: "/contact",
   },
@@ -236,7 +236,7 @@ export const services: Service[] = [
     title: "Mortgage",
     description:
       "Independent mortgage guidance: pre-approval, lender comparison and paperwork, coordinated alongside your purchase.",
-    image: p3,
+    image: "/mortgage.jpeg",
     ctaLabel: "Talk to us",
     ctaTo: "/contact",
   },
@@ -245,7 +245,7 @@ export const services: Service[] = [
     title: "Property Handover",
     description:
       "Snagging, inspection and key collection managed end to end, so a completed home is ready the day you take it on.",
-    image: p4,
+    image: "/property-handover.jpeg",
     ctaLabel: "Talk to us",
     ctaTo: "/contact",
   },

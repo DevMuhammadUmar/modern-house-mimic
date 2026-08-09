@@ -92,15 +92,15 @@ function Index() {
         <Carousel label="services">
           {services.map((service) => (
             <CarouselItem key={service.slug}>
-              <article className="group block">
-                <div className="overflow-hidden bg-muted">
+              <article className="group block flex flex-col h-full">
+                <div className="overflow-hidden bg-muted h-64 aspect-[4/3] shrink-0">
                   <img
                     src={service.image}
                     alt={service.title}
                     loading="lazy"
                     width={1200}
                     height={900}
-                    className="aspect-[4/3] w-full object-cover transition-transform duration-[900ms] ease-out group-hover:scale-[1.03]"
+                    className="h-full w-full object-cover transition-transform duration-[900ms] ease-out group-hover:scale-[1.03]"
                   />
                 </div>
                 <div className="mt-4 space-y-2">
