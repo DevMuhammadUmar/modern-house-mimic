@@ -10,7 +10,7 @@ export const Route = createFileRoute("/services")({
       {
         name: "description",
         content:
-          "Fieldhouse services: buying, selling, renting, mortgage guidance and property handover across Dubai's Emaar communities.",
+          "Parkwood Properties services: buying, selling, renting, mortgage guidance and property handover across Dubai's Emaar communities.",
       },
       { property: "og:title", content: "Services — Buy, Sell, Rent, Mortgage & Handover" },
       {

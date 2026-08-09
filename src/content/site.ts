@@ -262,7 +262,7 @@ export const about = {
   intro: {
     title: "Who we are",
     body: [
-      "Fieldhouse is a Dubai property consultancy working across Emaar's masterplanned communities. We advise buyers, sellers, landlords and tenants on homes where architecture and everyday living matter equally.",
+      "Parkwood Properties is a Dubai property consultancy working across Emaar's masterplanned communities. We advise buyers, sellers, landlords and tenants on homes where architecture and everyday living matter equally.",
       "Our team comes from architecture, publishing and brokerage. That mix shapes how we photograph a home, how we describe it, and how we advise on price.",
     ],
   },

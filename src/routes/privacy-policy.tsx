@@ -5,13 +5,13 @@ import { PageHero, SectionBlock } from "@/components/site/sections";
 export const Route = createFileRoute("/privacy-policy")({
   head: () => ({
     meta: [
-      { title: "Privacy Policy — Fieldhouse" },
+      { title: "Privacy Policy — Parkwood Properties" },
       {
         name: "description",
         content:
-          "How Fieldhouse collects, uses and protects personal information submitted through this website.",
+          "How Parkwood Properties collects, uses and protects personal information submitted through this website.",
       },
-      { property: "og:title", content: "Privacy Policy — Fieldhouse" },
+      { property: "og:title", content: "Privacy Policy — Parkwood Properties" },
       {
         property: "og:description",
         content: "How we handle personal information submitted through this website.",

@@ -5,12 +5,12 @@ import { PageHero, SectionBlock } from "@/components/site/sections";
 export const Route = createFileRoute("/terms-and-conditions")({
   head: () => ({
     meta: [
-      { title: "Terms & Conditions — Fieldhouse" },
+      { title: "Terms & Conditions — Parkwood Properties" },
       {
         name: "description",
-        content: "The terms governing use of the Fieldhouse website and our property services.",
+        content: "The terms governing use of the Parkwood Properties website and our property services.",
       },
-      { property: "og:title", content: "Terms & Conditions — Fieldhouse" },
+      { property: "og:title", content: "Terms & Conditions — Parkwood Properties" },
       {
         property: "og:description",
         content: "Terms governing use of this website and our property services.",
