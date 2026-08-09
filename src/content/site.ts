@@ -17,11 +17,12 @@ import c4 from "@/assets/c4.jpg";
  */
 
 export const company = {
-  name: "Fieldhouse",
-  tagline: "A property consultancy for design-led living in Dubai",
-  email: "hello@fieldhouse.example",
-  phone: "+971 4 000 0000",
-  address: "Downtown Dubai, United Arab Emirates",
+  name: "Parkwood Properties",
+  tagline: "Built on Trust - Backed by Experience",
+  email: "admin@parkwoodproperties.ae",
+  website: "www.parkwoodproperties.ae",
+  websiteHref: "https://www.parkwoodproperties.ae",
+  logo,
 };
 
 export const nav = [
@@ -32,12 +33,24 @@ export const nav = [
   { label: "Contact Us", to: "/contact" as const },
 ];
 
-/** Placeholder social links — replace href once official accounts are supplied. */
-export const socials = [
-  { label: "Instagram", href: "#" },
-  { label: "LinkedIn", href: "#" },
-  { label: "YouTube", href: "#" },
-  { label: "WhatsApp", href: "#" },
+export type SocialIcon = "linkedin" | "facebook" | "instagram";
+
+export const socials: { label: string; href: string; icon: SocialIcon }[] = [
+  {
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/company/parkwood-properties-dubai/",
+    icon: "linkedin",
+  },
+  {
+    label: "Facebook",
+    href: "https://www.facebook.com/profile.php?id=61592645326753",
+    icon: "facebook",
+  },
+  {
+    label: "Instagram",
+    href: "https://www.instagram.com/propertiesparkwood/",
+    icon: "instagram",
+  },
 ];
 
 export type Listing = {
@@ -51,12 +64,9 @@ export type Listing = {
 
 export const featuredHero = {
   image: hero,
-  imageAlt: "Stone-walled hallway of an architect-designed house with a walnut sideboard",
-  kicker: "Today at Fieldhouse",
-  title: "The Oasis: a water-led community at the western edge of Dubai",
-  body: "Low villas, lagoons and shaded walks — a masterplan that trades density for light, water and quiet.",
-  ctaLabel: "Read more",
-  ctaTo: "/communities" as const,
+  imageAlt: "Contemporary Dubai villa with stone elevations and a reflecting pool at golden hour",
+  quote: ["WE SHAPE OUR BUILDINGS,", "AND AFTERWARDS OUR BUILDINGS SHAPE US."],
+  quoteAttribution: "— Winston Churchill",
 };
 
 export const prime: Listing[] = [
