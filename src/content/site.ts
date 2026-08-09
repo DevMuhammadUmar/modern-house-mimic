@@ -130,44 +130,11 @@ export type Community = {
 
 export const communities: Community[] = [
   {
-    slug: "dubai-creek-harbour",
-    name: "Dubai Creek Harbour",
+    slug: "downtown-dubai",
+    name: "Downtown Dubai",
     description:
-      "A waterfront district on the historic creek, built around a marina promenade, parks and long views back to the skyline.",
-    image: c1,
-    ctaLabel: "Enquire",
-  },
-  {
-    slug: "dubai-hills-estate",
-    name: "Dubai Hills Estate",
-    description:
-      "Villas and apartments set within an 18-hole championship golf course, mature parkland and tree-lined boulevards.",
-    image: c3,
-    ctaLabel: "Enquire",
-  },
-  {
-    slug: "the-oasis-by-emaar",
-    name: "The Oasis by Emaar",
-    description:
-      "Mansions and large-plot villas arranged around lagoons, water canals and swimmable lakes on the western edge of the city.",
-    image: p3,
-    ctaLabel: "Enquire",
-  },
-  {
-    slug: "grand-polo-club-and-resort",
-    name: "Grand Polo Club & Resort",
-    description:
-      "An equestrian-led community of low villas, stables and bridle paths, planned around open green space.",
-    image: c2,
-    ctaLabel: "Enquire",
-  },
-  {
-    slug: "rachid-yachts-and-marina",
-    name: "Rachid Yachts & Marina",
-    description:
-      "A marina address for apartments and penthouses, with berths, a yacht club and a walkable waterfront.",
-    image: c4,
-    ctaLabel: "Enquire",
+      "The city's central district — boulevard apartments and penthouses beside the fountain, opera house and Burj Khalifa.",
+    image: p2,
   },
   {
     slug: "the-valley",
@@ -175,23 +142,34 @@ export const communities: Community[] = [
     description:
       "A quieter townhouse and villa community along the Dubai–Al Ain Road, with sports fields, pocket parks and a town centre.",
     image: p5,
-    ctaLabel: "Enquire",
   },
   {
-    slug: "emaar-south",
-    name: "Emaar South",
+    slug: "dubai-hills-estate",
+    name: "Dubai Hills Estate",
     description:
-      "Golf-side homes and apartments close to Al Maktoum International, laid out around parks and community retail.",
-    image: p4,
-    ctaLabel: "Enquire",
+      "Villas and apartments set within an 18-hole championship golf course, mature parkland and tree-lined boulevards.",
+    image: c3,
   },
   {
-    slug: "downtown-dubai",
-    name: "Downtown Dubai",
+    slug: "the-oasis-by-emaar",
+    name: "The Oasis by Emaar",
     description:
-      "The city's central district — boulevard apartments and penthouses beside the fountain, opera house and Burj Khalifa.",
-    image: p2,
-    ctaLabel: "Enquire",
+      "Mansions and large-plot villas arranged around lagoons, water canals and swimmable lakes on the western edge of the city.",
+    image: p3,
+  },
+  {
+    slug: "dubai-creek-harbour",
+    name: "Dubai Creek Harbour",
+    description:
+      "A waterfront district on the historic creek, built around a marina promenade, parks and long views back to the skyline.",
+    image: c1,
+  },
+  {
+    slug: "rachid-yachts-and-marina",
+    name: "Rachid Yachts & Marina",
+    description:
+      "A marina address for apartments and penthouses, with berths, a yacht club and a walkable waterfront.",
+    image: c4,
   },
   {
     slug: "arabian-ranches-iii",
@@ -199,7 +177,20 @@ export const communities: Community[] = [
     description:
       "Family townhouses and villas built around a central park, lazy river and clubhouse, in a mature ranches setting.",
     image: p1,
-    ctaLabel: "Enquire",
+  },
+  {
+    slug: "emaar-south",
+    name: "Emaar South",
+    description:
+      "Golf-side homes and apartments close to Al Maktoum International, laid out around parks and community retail.",
+    image: p4,
+  },
+  {
+    slug: "grand-polo-club-and-resort",
+    name: "Grand Polo Club & Resort",
+    description:
+      "An equestrian-led community of low villas, stables and bridle paths, planned around open green space.",
+    image: c2,
   },
 ];
 
