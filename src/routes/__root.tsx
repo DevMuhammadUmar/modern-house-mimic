@@ -80,16 +80,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Fieldhouse — Architectural Homes For Sale" },
+      { title: "Parkwood Properties — Built on Trust, Backed by Experience" },
       {
         name: "description",
-        content: "An estate agency for design-led living: modernist houses and architect-designed apartments.",
+        content:
+          "Parkwood Properties: buying, selling, renting, mortgage and handover across Dubai's leading masterplanned communities.",
       },
-      { name: "author", content: "Fieldhouse" },
-      { property: "og:title", content: "Fieldhouse — Architectural Homes For Sale" },
+      { name: "author", content: "Parkwood Properties" },
+      { property: "og:title", content: "Parkwood Properties — Built on Trust, Backed by Experience" },
       {
         property: "og:description",
-        content: "An estate agency for design-led living: modernist houses and architect-designed apartments.",
+        content:
+          "Buy, sell, rent, finance and hand over homes across Dubai's leading masterplanned communities.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
