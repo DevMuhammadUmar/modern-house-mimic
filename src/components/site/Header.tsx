@@ -10,12 +10,29 @@ export function Header() {
   return (
     <header className="sticky top-0 z-30 border-b border-border bg-background/95 backdrop-blur">
       <nav className="mx-auto flex max-w-[1400px] items-center justify-between gap-6 px-6 py-5 md:px-10">
-        <Link to="/" aria-label={`${company.name} home`} onClick={() => setOpen(false)}>
-          <span
-            className="text-lg tracking-[0.24em] uppercase md:text-xl"
-            style={{ fontFamily: "var(--font-serif)" }}
-          >
-            {company.name}
+        <Link
+          to="/"
+          aria-label={`${company.name} home`}
+          onClick={() => setOpen(false)}
+          className="flex items-center gap-3"
+        >
+          <img
+            src={company.logo}
+            alt=""
+            width={816}
+            height={816}
+            className="size-10 object-contain md:size-12"
+          />
+          <span className="flex flex-col leading-tight">
+            <span
+              className="text-base tracking-[0.24em] uppercase md:text-lg"
+              style={{ fontFamily: "var(--font-serif)" }}
+            >
+              {company.name}
+            </span>
+            <span className="label text-[0.6rem] text-muted-foreground md:text-[0.65rem]">
+              {company.tagline}
+            </span>
           </span>
         </Link>
 
