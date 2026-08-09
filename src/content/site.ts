@@ -22,7 +22,7 @@ export const company = {
   email: "admin@parkwoodproperties.ae",
   website: "www.parkwoodproperties.ae",
   websiteHref: "https://www.parkwoodproperties.ae",
-  logo: "/log.jpeg",
+  logo: "/logo.svg",
 };
 
 export const nav = [

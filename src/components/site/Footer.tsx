@@ -272,6 +272,10 @@ export function Footer() {
               width={816}
               height={816}
               className="h-12 md:h-14 w-auto object-contain"
+              style={{
+                filter:
+                  "invert(1)",
+              }}
             />
             <p
               className="text-lg tracking-[0.24em] uppercase"

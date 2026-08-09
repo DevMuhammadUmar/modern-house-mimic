@@ -30,12 +30,11 @@ export const Route = createFileRoute("/")({
 });
 
 function Section({
-  title,
   action,
   actionTo,
   children,
 }: {
-  title: string;
+  title?: string;
   action: string;
   actionTo: string;
   children: React.ReactNode;
@@ -43,13 +42,12 @@ function Section({
   return (
     <section className="border-t border-border px-6 py-16 md:px-10 md:py-24">
       <div className="mx-auto max-w-[1400px]">
-        <h2 className="label text-center">{title}</h2>
-        <div className="mt-10 md:mt-14">{children}</div>
-        <div className="mt-8 flex justify-center">
+        <div className="flex justify-center">
           <Link to={actionTo} className="btn-outline">
             {action}
           </Link>
         </div>
+        <div className="mt-10 md:mt-14">{children}</div>
       </div>
     </section>
   );
