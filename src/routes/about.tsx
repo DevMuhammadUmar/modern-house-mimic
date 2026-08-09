@@ -6,13 +6,13 @@ import { about } from "@/content/site";
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
-      { title: "About Us — Fieldhouse Property Consultancy" },
+      { title: "About Us — Parkwood Properties Property Consultancy" },
       {
         name: "description",
         content:
-          "Fieldhouse is a Dubai property consultancy for design-led living, advising on homes across Emaar's masterplanned communities.",
+          "Parkwood Properties is a Dubai property consultancy for design-led living, advising on homes across Emaar's masterplanned communities.",
       },
-      { property: "og:title", content: "About Us — Fieldhouse Property Consultancy" },
+      { property: "og:title", content: "About Us — Parkwood Properties Property Consultancy" },
       {
         property: "og:description",
         content: "Who we are, how we work, and why we take on fewer homes with more care.",

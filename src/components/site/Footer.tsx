@@ -1,10 +1,17 @@
 import { Link } from "@tanstack/react-router";
+import { Facebook, Instagram, Linkedin } from "lucide-react";
 import { useState } from "react";
 import { z } from "zod";
 
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { FormSuccess, TextAreaField, TextField } from "@/components/site/form-fields";
-import { company, nav, socials } from "@/content/site";
+import { company, nav, socials, type SocialIcon } from "@/content/site";
+
+const socialIcons: Record<SocialIcon, typeof Linkedin> = {
+  linkedin: Linkedin,
+  facebook: Facebook,
+  instagram: Instagram,
+};
 
 const email = z.string().trim().min(1, "Email is required").email("Enter a valid email address").max(255);
 const name = z.string().trim().min(1, "Name is required").max(100, "Keep this under 100 characters");
@@ -254,16 +261,38 @@ export function Footer() {
   const [feedbackOpen, setFeedbackOpen] = useState(false);
 
   return (
-    <footer className="border-t border-border px-6 py-14 md:px-10">
+    <footer className="bg-brand px-6 py-14 text-brand-foreground md:px-10">
       <div className="mx-auto grid max-w-[1400px] gap-10 md:grid-cols-4">
         <div>
-          <p
-            className="text-lg tracking-[0.24em] uppercase"
-            style={{ fontFamily: "var(--font-serif)" }}
-          >
-            {company.name}
-          </p>
-          <p className="mt-4 text-base leading-relaxed text-muted-foreground">{company.tagline}</p>
+          <div className="flex items-center gap-3">
+            <img
+              src={company.logo}
+              alt=""
+              loading="lazy"
+              width={816}
+              height={816}
+              className="size-10 object-contain brightness-0 invert"
+            />
+            <p
+              className="text-lg tracking-[0.24em] uppercase"
+              style={{ fontFamily: "var(--font-serif)" }}
+            >
+              {company.name}
+            </p>
+          </div>
+          <p className="mt-4 text-base leading-relaxed opacity-80">{company.tagline}</p>
+          <div className="mt-6 space-y-1 text-base opacity-80">
+            <p>
+              <a href={`mailto:${company.email}`} className="hover:opacity-60">
+                {company.email}
+              </a>
+            </p>
+            <p>
+              <a href={company.websiteHref} className="hover:opacity-60">
+                {company.website}
+              </a>
+            </p>
+          </div>
           <div className="mt-6 flex flex-wrap gap-3">
             <button type="button" className="btn-outline" onClick={() => setLaunchOpen(true)}>
               Register for new launches
@@ -275,7 +304,7 @@ export function Footer() {
         </div>
 
         <div>
-          <h3 className="label text-muted-foreground">Explore</h3>
+          <h3 className="label opacity-70">Explore</h3>
           <ul className="mt-4 space-y-2">
             {nav.map((item) => (
               <li key={item.to}>
@@ -288,25 +317,35 @@ export function Footer() {
         </div>
 
         <div>
-          <h3 className="label text-muted-foreground">Follow us</h3>
-          <ul className="mt-4 space-y-2">
-            {socials.map((s) => (
-              <li key={s.label}>
-                <a href={s.href} className="text-base hover:opacity-60">
-                  {s.label}
-                </a>
-              </li>
-            ))}
+          <h3 className="label opacity-70">Follow us</h3>
+          <ul className="mt-4 flex gap-3">
+            {socials.map((s) => {
+              const Icon = socialIcons[s.icon];
+              return (
+                <li key={s.label}>
+                  <a
+                    href={s.href}
+                    target="_blank"
+                    rel="noreferrer noopener"
+                    aria-label={s.label}
+                    className="inline-flex size-11 items-center justify-center border border-current transition-opacity hover:opacity-60"
+                  >
+                    <Icon className="size-4" />
+                  </a>
+                </li>
+              );
+            })}
           </ul>
         </div>
 
         <Newsletter />
       </div>
 
-      <div className="mx-auto mt-14 flex max-w-[1400px] flex-col gap-3 border-t border-border pt-6 md:flex-row md:items-center md:justify-between">
-        <p className="label text-muted-foreground">
-          © {new Date().getFullYear()} {company.name} — a property consultancy for design-led living
+      <div className="mx-auto mt-14 flex max-w-[1400px] flex-col gap-3 border-t border-current/20 pt-6 md:flex-row md:items-center md:justify-between">
+        <p className="label opacity-70">
+          © {new Date().getFullYear()} {company.name} — {company.tagline}
         </p>
+
         <ul className="flex flex-wrap gap-6">
           <li>
             <Link to="/privacy-policy" className="label hover:opacity-60">

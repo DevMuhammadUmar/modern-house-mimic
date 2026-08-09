@@ -1,25 +1,26 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 
-import { ListingCard } from "@/components/site/ListingCard";
-import { featuredHero, prime, recent } from "@/content/site";
+import { Carousel, CarouselItem } from "@/components/site/Carousel";
+import { CommunityCard } from "@/components/site/CommunityCard";
+import { communities, featuredHero, services } from "@/content/site";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Fieldhouse — Design-Led Homes in Dubai's Emaar Communities" },
+      { title: "Parkwood Properties — Built on Trust, Backed by Experience" },
       {
         name: "description",
         content:
-          "Fieldhouse is a Dubai property consultancy for design-led living: homes across Dubai Creek Harbour, Dubai Hills Estate, The Oasis, Downtown Dubai and more.",
+          "Parkwood Properties advises on homes across Dubai's leading communities — Downtown Dubai, Dubai Hills Estate, The Oasis, Dubai Creek Harbour and more.",
       },
       {
         property: "og:title",
-        content: "Fieldhouse — Design-Led Homes in Dubai's Emaar Communities",
+        content: "Parkwood Properties — Built on Trust, Backed by Experience",
       },
       {
         property: "og:description",
         content:
-          "Buy, sell, rent and hand over homes across Emaar's masterplanned communities in Dubai.",
+          "Buy, sell, rent, finance and hand over homes across Dubai's masterplanned communities.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -42,13 +43,13 @@ function Section({
   return (
     <section className="border-t border-border px-6 py-16 md:px-10 md:py-24">
       <div className="mx-auto max-w-[1400px]">
-        <div className="flex items-center justify-between gap-6">
-          <h2 className="label">{title}</h2>
+        <h2 className="label text-center">{title}</h2>
+        <div className="mt-10 md:mt-14">{children}</div>
+        <div className="mt-8 flex justify-center">
           <Link to={actionTo} className="btn-outline">
             {action}
           </Link>
         </div>
-        <div className="mt-10 grid gap-x-6 gap-y-12 md:mt-14 md:grid-cols-3">{children}</div>
       </div>
     </section>
   );
@@ -65,30 +66,53 @@ function Index() {
           height={1104}
           className="h-[52vh] w-full object-cover md:h-[78vh]"
         />
-        <div className="flex flex-col justify-center gap-6 bg-accent px-8 py-14 md:px-12">
-          <p className="label self-start border-b border-foreground/30 pb-2">
-            {featuredHero.kicker}
-          </p>
-          <h1 className="display text-3xl md:text-[2.6rem]">{featuredHero.title}</h1>
-          <p className="max-w-md text-lg leading-relaxed text-muted-foreground">
-            {featuredHero.body}
-          </p>
-          <Link to={featuredHero.ctaTo} className="btn-outline self-start">
-            {featuredHero.ctaLabel}
-          </Link>
-        </div>
+        <figure className="flex flex-col justify-center gap-6 bg-brand px-8 py-14 text-brand-foreground md:px-12">
+          <blockquote className="display text-2xl leading-tight md:text-[2rem]">
+            {featuredHero.quote.map((line) => (
+              <span key={line} className="block">
+                {line}
+              </span>
+            ))}
+          </blockquote>
+          <figcaption className="label opacity-80">{featuredHero.quoteAttribution}</figcaption>
+        </figure>
       </section>
 
-      <Section title="Prime" action="View communities" actionTo="/communities">
-        {prime.map((l) => (
-          <ListingCard key={l.name} listing={l} />
-        ))}
+      <Section title="Communities" action="View communities" actionTo="/communities">
+        <Carousel label="communities">
+          {communities.map((community) => (
+            <CarouselItem key={community.slug}>
+              <CommunityCard community={community} />
+            </CarouselItem>
+          ))}
+        </Carousel>
       </Section>
 
-      <Section title="New this week" action="Our services" actionTo="/services">
-        {recent.map((l) => (
-          <ListingCard key={l.name} listing={l} />
-        ))}
+      <Section title="Services" action="Our services" actionTo="/services">
+        <Carousel label="services">
+          {services.map((service) => (
+            <CarouselItem key={service.slug}>
+              <article className="group block">
+                <div className="overflow-hidden bg-muted">
+                  <img
+                    src={service.image}
+                    alt={service.title}
+                    loading="lazy"
+                    width={1200}
+                    height={900}
+                    className="aspect-[4/3] w-full object-cover transition-transform duration-[900ms] ease-out group-hover:scale-[1.03]"
+                  />
+                </div>
+                <div className="mt-4 space-y-2">
+                  <h3 className="display text-xl">{service.title}</h3>
+                  <p className="text-base leading-relaxed text-muted-foreground">
+                    {service.description}
+                  </p>
+                </div>
+              </article>
+            </CarouselItem>
+          ))}
+        </Carousel>
       </Section>
 
       <section className="border-t border-border px-6 py-20 md:px-10 md:py-28">

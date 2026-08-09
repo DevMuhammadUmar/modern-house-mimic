@@ -1,4 +1,5 @@
-import hero from "@/assets/hero.jpg";
+import hero from "@/assets/hero-parkwood.jpg";
+import logo from "@/assets/logo-parkwood.png";
 import p1 from "@/assets/p1.jpg";
 import p2 from "@/assets/p2.jpg";
 import p3 from "@/assets/p3.jpg";
@@ -16,11 +17,12 @@ import c4 from "@/assets/c4.jpg";
  */
 
 export const company = {
-  name: "Fieldhouse",
-  tagline: "A property consultancy for design-led living in Dubai",
-  email: "hello@fieldhouse.example",
-  phone: "+971 4 000 0000",
-  address: "Downtown Dubai, United Arab Emirates",
+  name: "Parkwood Properties",
+  tagline: "Built on Trust - Backed by Experience",
+  email: "admin@parkwoodproperties.ae",
+  website: "www.parkwoodproperties.ae",
+  websiteHref: "https://www.parkwoodproperties.ae",
+  logo,
 };
 
 export const nav = [
@@ -31,12 +33,24 @@ export const nav = [
   { label: "Contact Us", to: "/contact" as const },
 ];
 
-/** Placeholder social links — replace href once official accounts are supplied. */
-export const socials = [
-  { label: "Instagram", href: "#" },
-  { label: "LinkedIn", href: "#" },
-  { label: "YouTube", href: "#" },
-  { label: "WhatsApp", href: "#" },
+export type SocialIcon = "linkedin" | "facebook" | "instagram";
+
+export const socials: { label: string; href: string; icon: SocialIcon }[] = [
+  {
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/company/parkwood-properties-dubai/",
+    icon: "linkedin",
+  },
+  {
+    label: "Facebook",
+    href: "https://www.facebook.com/profile.php?id=61592645326753",
+    icon: "facebook",
+  },
+  {
+    label: "Instagram",
+    href: "https://www.instagram.com/propertiesparkwood/",
+    icon: "instagram",
+  },
 ];
 
 export type Listing = {
@@ -50,12 +64,9 @@ export type Listing = {
 
 export const featuredHero = {
   image: hero,
-  imageAlt: "Stone-walled hallway of an architect-designed house with a walnut sideboard",
-  kicker: "Today at Fieldhouse",
-  title: "The Oasis: a water-led community at the western edge of Dubai",
-  body: "Low villas, lagoons and shaded walks — a masterplan that trades density for light, water and quiet.",
-  ctaLabel: "Read more",
-  ctaTo: "/communities" as const,
+  imageAlt: "Contemporary Dubai villa with stone elevations and a reflecting pool at golden hour",
+  quote: ["WE SHAPE OUR BUILDINGS,", "AND AFTERWARDS OUR BUILDINGS SHAPE US."],
+  quoteAttribution: "— Winston Churchill",
 };
 
 export const prime: Listing[] = [
@@ -119,44 +130,11 @@ export type Community = {
 
 export const communities: Community[] = [
   {
-    slug: "dubai-creek-harbour",
-    name: "Dubai Creek Harbour",
+    slug: "downtown-dubai",
+    name: "Downtown Dubai",
     description:
-      "A waterfront district on the historic creek, built around a marina promenade, parks and long views back to the skyline.",
-    image: c1,
-    ctaLabel: "Enquire",
-  },
-  {
-    slug: "dubai-hills-estate",
-    name: "Dubai Hills Estate",
-    description:
-      "Villas and apartments set within an 18-hole championship golf course, mature parkland and tree-lined boulevards.",
-    image: c3,
-    ctaLabel: "Enquire",
-  },
-  {
-    slug: "the-oasis-by-emaar",
-    name: "The Oasis by Emaar",
-    description:
-      "Mansions and large-plot villas arranged around lagoons, water canals and swimmable lakes on the western edge of the city.",
-    image: p3,
-    ctaLabel: "Enquire",
-  },
-  {
-    slug: "grand-polo-club-and-resort",
-    name: "Grand Polo Club & Resort",
-    description:
-      "An equestrian-led community of low villas, stables and bridle paths, planned around open green space.",
-    image: c2,
-    ctaLabel: "Enquire",
-  },
-  {
-    slug: "rachid-yachts-and-marina",
-    name: "Rachid Yachts & Marina",
-    description:
-      "A marina address for apartments and penthouses, with berths, a yacht club and a walkable waterfront.",
-    image: c4,
-    ctaLabel: "Enquire",
+      "The city's central district — boulevard apartments and penthouses beside the fountain, opera house and Burj Khalifa.",
+    image: p2,
   },
   {
     slug: "the-valley",
@@ -164,23 +142,34 @@ export const communities: Community[] = [
     description:
       "A quieter townhouse and villa community along the Dubai–Al Ain Road, with sports fields, pocket parks and a town centre.",
     image: p5,
-    ctaLabel: "Enquire",
   },
   {
-    slug: "emaar-south",
-    name: "Emaar South",
+    slug: "dubai-hills-estate",
+    name: "Dubai Hills Estate",
     description:
-      "Golf-side homes and apartments close to Al Maktoum International, laid out around parks and community retail.",
-    image: p4,
-    ctaLabel: "Enquire",
+      "Villas and apartments set within an 18-hole championship golf course, mature parkland and tree-lined boulevards.",
+    image: c3,
   },
   {
-    slug: "downtown-dubai",
-    name: "Downtown Dubai",
+    slug: "the-oasis-by-emaar",
+    name: "The Oasis by Emaar",
     description:
-      "The city's central district — boulevard apartments and penthouses beside the fountain, opera house and Burj Khalifa.",
-    image: p2,
-    ctaLabel: "Enquire",
+      "Mansions and large-plot villas arranged around lagoons, water canals and swimmable lakes on the western edge of the city.",
+    image: p3,
+  },
+  {
+    slug: "dubai-creek-harbour",
+    name: "Dubai Creek Harbour",
+    description:
+      "A waterfront district on the historic creek, built around a marina promenade, parks and long views back to the skyline.",
+    image: c1,
+  },
+  {
+    slug: "rachid-yachts-and-marina",
+    name: "Rachid Yachts & Marina",
+    description:
+      "A marina address for apartments and penthouses, with berths, a yacht club and a walkable waterfront.",
+    image: c4,
   },
   {
     slug: "arabian-ranches-iii",
@@ -188,7 +177,20 @@ export const communities: Community[] = [
     description:
       "Family townhouses and villas built around a central park, lazy river and clubhouse, in a mature ranches setting.",
     image: p1,
-    ctaLabel: "Enquire",
+  },
+  {
+    slug: "emaar-south",
+    name: "Emaar South",
+    description:
+      "Golf-side homes and apartments close to Al Maktoum International, laid out around parks and community retail.",
+    image: p4,
+  },
+  {
+    slug: "grand-polo-club-and-resort",
+    name: "Grand Polo Club & Resort",
+    description:
+      "An equestrian-led community of low villas, stables and bridle paths, planned around open green space.",
+    image: c2,
   },
 ];
 
@@ -260,7 +262,7 @@ export const about = {
   intro: {
     title: "Who we are",
     body: [
-      "Fieldhouse is a Dubai property consultancy working across Emaar's masterplanned communities. We advise buyers, sellers, landlords and tenants on homes where architecture and everyday living matter equally.",
+      "Parkwood Properties is a Dubai property consultancy working across Emaar's masterplanned communities. We advise buyers, sellers, landlords and tenants on homes where architecture and everyday living matter equally.",
       "Our team comes from architecture, publishing and brokerage. That mix shapes how we photograph a home, how we describe it, and how we advise on price.",
     ],
   },

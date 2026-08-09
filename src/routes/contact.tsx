@@ -21,13 +21,13 @@ import { company, inquiryTypes } from "@/content/site";
 export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
-      { title: "Contact Us — Fieldhouse Dubai" },
+      { title: "Contact Us — Parkwood Properties Dubai" },
       {
         name: "description",
         content:
-          "Get in touch with Fieldhouse about a property, a career, feedback or a general enquiry. We reply within one working day.",
+          "Get in touch with Parkwood Properties about a property, a career, feedback or a general enquiry. We reply within one working day.",
       },
-      { property: "og:title", content: "Contact Us — Fieldhouse Dubai" },
+      { property: "og:title", content: "Contact Us — Parkwood Properties Dubai" },
       {
         property: "og:description",
         content: "Send us a property, career, feedback or general enquiry.",
@@ -123,18 +123,23 @@ function ContactPage() {
 
           <aside className="space-y-8">
             <div>
-              <h2 className="label text-muted-foreground">Office</h2>
-              <p className="mt-3 text-base leading-relaxed">{company.address}</p>
-            </div>
-            <div>
               <h2 className="label text-muted-foreground">Email</h2>
-              <p className="mt-3 text-base">{company.email}</p>
+              <p className="mt-3 text-base">
+                <a href={`mailto:${company.email}`} className="hover:opacity-60">
+                  {company.email}
+                </a>
+              </p>
             </div>
             <div>
-              <h2 className="label text-muted-foreground">Telephone</h2>
-              <p className="mt-3 text-base">{company.phone}</p>
+              <h2 className="label text-muted-foreground">Website</h2>
+              <p className="mt-3 text-base">
+                <a href={company.websiteHref} className="hover:opacity-60">
+                  {company.website}
+                </a>
+              </p>
             </div>
           </aside>
+
         </div>
       </SectionBlock>
     </main>
