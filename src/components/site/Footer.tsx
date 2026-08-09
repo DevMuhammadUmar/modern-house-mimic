@@ -1,10 +1,17 @@
 import { Link } from "@tanstack/react-router";
+import { Facebook, Instagram, Linkedin } from "lucide-react";
 import { useState } from "react";
 import { z } from "zod";
 
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { FormSuccess, TextAreaField, TextField } from "@/components/site/form-fields";
-import { company, nav, socials } from "@/content/site";
+import { company, nav, socials, type SocialIcon } from "@/content/site";
+
+const socialIcons: Record<SocialIcon, typeof Linkedin> = {
+  linkedin: Linkedin,
+  facebook: Facebook,
+  instagram: Instagram,
+};
 
 const email = z.string().trim().min(1, "Email is required").email("Enter a valid email address").max(255);
 const name = z.string().trim().min(1, "Name is required").max(100, "Keep this under 100 characters");
