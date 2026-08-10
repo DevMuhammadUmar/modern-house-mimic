@@ -12,3 +12,5 @@ Allow: /
 
 User-agent: *
 Allow: /
+
+Sitemap: https://modern-house-mimic.lovable.app/sitemap.xml
