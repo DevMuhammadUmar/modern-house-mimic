@@ -261,24 +261,24 @@ export function Footer() {
   const [feedbackOpen, setFeedbackOpen] = useState(false);
 
   return (
-    <footer className="bg-brand px-6 py-14 text-brand-foreground md:px-10">
-      <div className="mx-auto grid max-w-[1400px] gap-10 md:grid-cols-4">
-        <div>
-          <div className="flex items-center gap-3">
+    <footer className="bg-brand px-5 py-12 text-brand-foreground sm:px-6 sm:py-14 md:px-10">
+      <div className="mx-auto grid max-w-[1400px] gap-10 sm:grid-cols-2 md:grid-cols-4">
+        <div className="sm:col-span-2 md:col-span-1">
+          <div className="flex min-w-0 items-center gap-3">
             <img
               src={company.logo}
               alt=""
               loading="lazy"
               width={816}
               height={816}
-              className="h-12 md:h-14 w-auto object-contain"
+              className="h-11 w-auto shrink-0 object-contain sm:h-12 md:h-14"
               style={{
                 filter:
                   "invert(1)",
               }}
             />
             <p
-              className="text-lg tracking-[0.24em] uppercase"
+              className="text-base tracking-[0.2em] uppercase sm:text-lg sm:tracking-[0.24em]"
               style={{ fontFamily: "var(--font-serif)" }}
             >
               {company.name}
@@ -297,7 +297,7 @@ export function Footer() {
               </a>
             </p>
           </div>
-          <div className="mt-6 flex flex-wrap gap-3">
+          <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
             <button type="button" className="btn-outline" onClick={() => setLaunchOpen(true)}>
               Register for new launches
             </button>
@@ -345,12 +345,12 @@ export function Footer() {
         <Newsletter />
       </div>
 
-      <div className="mx-auto mt-14 flex max-w-[1400px] flex-col gap-3 border-t border-current/20 pt-6 md:flex-row md:items-center md:justify-between">
+      <div className="mx-auto mt-12 flex max-w-[1400px] sm:mt-14 flex-col gap-3 border-t border-current/20 pt-6 md:flex-row md:items-center md:justify-between">
         <p className="label opacity-70">
           © {new Date().getFullYear()} {company.name} — {company.tagline}
         </p>
 
-        <ul className="flex flex-wrap gap-6">
+        <ul className="flex flex-wrap gap-x-6 gap-y-2">
           <li>
             <Link to="/privacy-policy" className="label hover:opacity-60">
               Privacy Policy

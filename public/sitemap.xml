@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://modern-house-mimic.lovable.app/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://modern-house-mimic.lovable.app/about</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://modern-house-mimic.lovable.app/services</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://modern-house-mimic.lovable.app/communities</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://modern-house-mimic.lovable.app/communities/downtown-dubai</loc><priority>0.7</priority></url>
+  <url><loc>https://modern-house-mimic.lovable.app/communities/the-valley</loc><priority>0.7</priority></url>
+  <url><loc>https://modern-house-mimic.lovable.app/communities/dubai-hills-estate</loc><priority>0.7</priority></url>
+  <url><loc>https://modern-house-mimic.lovable.app/communities/the-oasis-by-emaar</loc><priority>0.7</priority></url>
+  <url><loc>https://modern-house-mimic.lovable.app/communities/dubai-creek-harbour</loc><priority>0.7</priority></url>
+  <url><loc>https://modern-house-mimic.lovable.app/communities/rachid-yachts-and-marina</loc><priority>0.7</priority></url>
+  <url><loc>https://modern-house-mimic.lovable.app/communities/arabian-ranches-iii</loc><priority>0.7</priority></url>
+  <url><loc>https://modern-house-mimic.lovable.app/communities/emaar-south</loc><priority>0.7</priority></url>
+  <url><loc>https://modern-house-mimic.lovable.app/communities/grand-polo-club-and-resort</loc><priority>0.7</priority></url>
+  <url><loc>https://modern-house-mimic.lovable.app/request-appraisal</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://modern-house-mimic.lovable.app/contact</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://modern-house-mimic.lovable.app/privacy-policy</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://modern-house-mimic.lovable.app/terms-and-conditions</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
+</urlset>

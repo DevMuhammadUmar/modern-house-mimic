@@ -35,7 +35,9 @@ export const Route = createFileRoute("/request-appraisal")({
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { property: "og:url", content: "https://modern-house-mimic.lovable.app/request-appraisal" },
     ],
+    links: [{ rel: "canonical", href: "https://modern-house-mimic.lovable.app/request-appraisal" }],
   }),
   component: RequestAppraisalPage,
 });

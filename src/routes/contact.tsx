@@ -34,7 +34,9 @@ export const Route = createFileRoute("/contact")({
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { property: "og:url", content: "https://modern-house-mimic.lovable.app/contact" },
     ],
+    links: [{ rel: "canonical", href: "https://modern-house-mimic.lovable.app/contact" }],
   }),
   component: ContactPage,
 });
