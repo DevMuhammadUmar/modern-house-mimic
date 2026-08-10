@@ -17,7 +17,7 @@ import { Route as PrivacyPolicyRouteImport } from './routes/privacy-policy'
 import { Route as RequestAppraisalRouteImport } from './routes/request-appraisal'
 import { Route as ServicesRouteImport } from './routes/services'
 import { Route as TermsAndConditionsRouteImport } from './routes/terms-and-conditions'
-import { Route as CommunitiesSlugRouteImport } from './routes/communities.$slug'
+import { Route as CommunitiesSlugRouteImport } from './routes/communities_.$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -60,15 +60,15 @@ const TermsAndConditionsRoute = TermsAndConditionsRouteImport.update({
   getParentRoute: () => rootRouteImport,
 } as any)
 const CommunitiesSlugRoute = CommunitiesSlugRouteImport.update({
-  id: '/$slug',
-  path: '/$slug',
-  getParentRoute: () => CommunitiesRoute,
+  id: '/communities_/$slug',
+  path: '/communities/$slug',
+  getParentRoute: () => rootRouteImport,
 } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/communities': typeof CommunitiesRouteWithChildren
+  '/communities': typeof CommunitiesRoute
   '/contact': typeof ContactRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/request-appraisal': typeof RequestAppraisalRoute
@@ -79,7 +79,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/communities': typeof CommunitiesRouteWithChildren
+  '/communities': typeof CommunitiesRoute
   '/contact': typeof ContactRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/request-appraisal': typeof RequestAppraisalRoute
@@ -91,13 +91,13 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/communities': typeof CommunitiesRouteWithChildren
+  '/communities': typeof CommunitiesRoute
   '/contact': typeof ContactRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/request-appraisal': typeof RequestAppraisalRoute
   '/services': typeof ServicesRoute
   '/terms-and-conditions': typeof TermsAndConditionsRoute
-  '/communities/$slug': typeof CommunitiesSlugRoute
+  '/communities_/$slug': typeof CommunitiesSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -132,18 +132,19 @@ export interface FileRouteTypes {
     | '/request-appraisal'
     | '/services'
     | '/terms-and-conditions'
-    | '/communities/$slug'
+    | '/communities_/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
-  CommunitiesRoute: typeof CommunitiesRouteWithChildren
+  CommunitiesRoute: typeof CommunitiesRoute
   ContactRoute: typeof ContactRoute
   PrivacyPolicyRoute: typeof PrivacyPolicyRoute
   RequestAppraisalRoute: typeof RequestAppraisalRoute
   ServicesRoute: typeof ServicesRoute
   TermsAndConditionsRoute: typeof TermsAndConditionsRoute
+  CommunitiesSlugRoute: typeof CommunitiesSlugRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -204,37 +205,26 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TermsAndConditionsRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/communities/$slug': {
-      id: '/communities/$slug'
-      path: '/$slug'
+    '/communities_/$slug': {
+      id: '/communities_/$slug'
+      path: '/communities/$slug'
       fullPath: '/communities/$slug'
       preLoaderRoute: typeof CommunitiesSlugRouteImport
-      parentRoute: typeof CommunitiesRoute
+      parentRoute: typeof rootRouteImport
     }
   }
 }
 
-interface CommunitiesRouteChildren {
-  CommunitiesSlugRoute: typeof CommunitiesSlugRoute
-}
-
-const CommunitiesRouteChildren: CommunitiesRouteChildren = {
-  CommunitiesSlugRoute: CommunitiesSlugRoute,
-}
-
-const CommunitiesRouteWithChildren = CommunitiesRoute._addFileChildren(
-  CommunitiesRouteChildren,
-)
-
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
-  CommunitiesRoute: CommunitiesRouteWithChildren,
+  CommunitiesRoute: CommunitiesRoute,
   ContactRoute: ContactRoute,
   PrivacyPolicyRoute: PrivacyPolicyRoute,
   RequestAppraisalRoute: RequestAppraisalRoute,
   ServicesRoute: ServicesRoute,
   TermsAndConditionsRoute: TermsAndConditionsRoute,
+  CommunitiesSlugRoute: CommunitiesSlugRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
