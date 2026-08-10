@@ -14,6 +14,7 @@ import {
 import type { ComponentType } from "react";
 
 import { SectionBlock } from "@/components/site/sections";
+import type { CommunityStat } from "@/content/communities";
 import { getCommunityDetail } from "@/content/communities";
 
 const icons: Record<string, ComponentType<{ className?: string }>> = {
