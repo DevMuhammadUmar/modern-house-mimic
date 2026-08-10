@@ -33,7 +33,7 @@ function PrivacyPolicyPage() {
         <div className="mx-auto max-w-2xl space-y-5">
           <p className="text-lg leading-relaxed text-muted-foreground">PARKWOOD PROPERTIES
 Dubai, United Arab Emirates</p>
-          <h1 className="text-2xl font-bold">Privacy Policy</h1>
+          <h2 className="display text-2xl">Privacy Policy</h2>
           <p className="text-lg leading-relaxed text-muted-foreground">Parkwood Properties (“Parkwood Properties”, “we”, “us” or “our”) respects your privacy and is committed to protecting the personal information you provide when you visit our website, contact us, or use our real estate services. This Privacy Policy explains, in simple terms, how we collect, use and protect your information.</p>
           <h2 className="text-xl font-semibold">1. Information We Collect</h2>
           <p className="text-lg leading-relaxed text-muted-foreground">Depending on how you interact with us, we may collect information such as your name, email address, telephone number, property address, property details, buying or renting preferences, budget and other information you provide in connection with a property enquiry or transaction.

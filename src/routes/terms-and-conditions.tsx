@@ -31,7 +31,7 @@ function TermsPage() {
       <SectionBlock>
         <div className="mx-auto max-w-2xl space-y-5">
           <p className="text-lg leading-relaxed text-muted-foreground">PARKWOOD PROPERTIES<br/>Dubai, United Arab Emirates</p>
-          <h1 className="text-2xl font-bold">Website Terms &amp; Conditions</h1>
+          <h2 className="display text-2xl">Website Terms &amp; Conditions</h2>
           <h2 className="text-xl font-semibold">1. Acceptance of These Terms</h2>
           <p className="text-lg leading-relaxed text-muted-foreground">By accessing or using the Parkwood Properties website, you agree to these Terms &amp; Conditions. If you do not agree with these terms, please do not use the website.</p>
           <h2 className="text-xl font-semibold">2. Website Information</h2>
