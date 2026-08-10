@@ -17,6 +17,7 @@ import { Route as PrivacyPolicyRouteImport } from './routes/privacy-policy'
 import { Route as RequestAppraisalRouteImport } from './routes/request-appraisal'
 import { Route as ServicesRouteImport } from './routes/services'
 import { Route as TermsAndConditionsRouteImport } from './routes/terms-and-conditions'
+import { Route as CommunitiesSlugRouteImport } from './routes/communities_.$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -58,6 +59,11 @@ const TermsAndConditionsRoute = TermsAndConditionsRouteImport.update({
   path: '/terms-and-conditions',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CommunitiesSlugRoute = CommunitiesSlugRouteImport.update({
+  id: '/communities_/$slug',
+  path: '/communities/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -68,6 +74,7 @@ export interface FileRoutesByFullPath {
   '/request-appraisal': typeof RequestAppraisalRoute
   '/services': typeof ServicesRoute
   '/terms-and-conditions': typeof TermsAndConditionsRoute
+  '/communities/$slug': typeof CommunitiesSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -78,6 +85,7 @@ export interface FileRoutesByTo {
   '/request-appraisal': typeof RequestAppraisalRoute
   '/services': typeof ServicesRoute
   '/terms-and-conditions': typeof TermsAndConditionsRoute
+  '/communities/$slug': typeof CommunitiesSlugRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -89,6 +97,7 @@ export interface FileRoutesById {
   '/request-appraisal': typeof RequestAppraisalRoute
   '/services': typeof ServicesRoute
   '/terms-and-conditions': typeof TermsAndConditionsRoute
+  '/communities_/$slug': typeof CommunitiesSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -101,6 +110,7 @@ export interface FileRouteTypes {
     | '/request-appraisal'
     | '/services'
     | '/terms-and-conditions'
+    | '/communities/$slug'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -111,6 +121,7 @@ export interface FileRouteTypes {
     | '/request-appraisal'
     | '/services'
     | '/terms-and-conditions'
+    | '/communities/$slug'
   id:
     | '__root__'
     | '/'
@@ -121,6 +132,7 @@ export interface FileRouteTypes {
     | '/request-appraisal'
     | '/services'
     | '/terms-and-conditions'
+    | '/communities_/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -132,6 +144,7 @@ export interface RootRouteChildren {
   RequestAppraisalRoute: typeof RequestAppraisalRoute
   ServicesRoute: typeof ServicesRoute
   TermsAndConditionsRoute: typeof TermsAndConditionsRoute
+  CommunitiesSlugRoute: typeof CommunitiesSlugRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -192,6 +205,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TermsAndConditionsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/communities_/$slug': {
+      id: '/communities_/$slug'
+      path: '/communities/$slug'
+      fullPath: '/communities/$slug'
+      preLoaderRoute: typeof CommunitiesSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -204,17 +224,8 @@ const rootRouteChildren: RootRouteChildren = {
   RequestAppraisalRoute: RequestAppraisalRoute,
   ServicesRoute: ServicesRoute,
   TermsAndConditionsRoute: TermsAndConditionsRoute,
+  CommunitiesSlugRoute: CommunitiesSlugRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
