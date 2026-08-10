@@ -149,7 +149,7 @@ function CommunityDetailPage() {
           </div>
 
           <dl className="mt-12 grid grid-cols-1 gap-px border border-border bg-border sm:grid-cols-2 lg:grid-cols-4">
-            {community.amenities.stats.map((stat) => {
+            {community.amenities.stats.map((stat: CommunityStat) => {
               const Icon = icons[stat.icon] ?? Sparkles;
               return (
                 <div
