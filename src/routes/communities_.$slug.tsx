@@ -27,7 +27,7 @@ const icons: Record<string, ComponentType<{ className?: string }>> = {
   building: Building2,
 };
 
-export const Route = createFileRoute("/communities/$slug")({
+export const Route = createFileRoute("/communities_/$slug")({
   loader: ({ params }) => {
     const community = getCommunityDetail(params.slug);
     if (!community) throw notFound();
@@ -77,7 +77,7 @@ function CommunityNotFound() {
 
 function CommunityDetailPage() {
   const { community } = Route.useLoaderData();
-  const [first, ...rest] = community.overview.paragraphs;
+  const [first, ...rest]: string[] = community.overview.paragraphs;
 
   return (
     <main>
