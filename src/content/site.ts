@@ -134,56 +134,56 @@ export const communities: Community[] = [
     name: "Downtown Dubai",
     description:
       "The city's central district — boulevard apartments and penthouses beside the fountain, opera house and Burj Khalifa.",
-    image: p2,
+    image: "/downtown dubai.avif",
   },
   {
     slug: "the-valley",
     name: "The Valley",
     description:
       "A quieter townhouse and villa community along the Dubai–Al Ain Road, with sports fields, pocket parks and a town centre.",
-    image: p5,
+    image: "/the valley.avif",
   },
   {
     slug: "dubai-hills-estate",
     name: "Dubai Hills Estate",
     description:
       "Villas and apartments set within an 18-hole championship golf course, mature parkland and tree-lined boulevards.",
-    image: c3,
+    image: "/dubai hills state.avif",
   },
   {
     slug: "the-oasis-by-emaar",
     name: "The Oasis by Emaar",
     description:
       "Mansions and large-plot villas arranged around lagoons, water canals and swimmable lakes on the western edge of the city.",
-    image: p3,
+    image: "/oasis by emaar.avif",
   },
   {
     slug: "dubai-creek-harbour",
     name: "Dubai Creek Harbour",
     description:
       "A waterfront district on the historic creek, built around a marina promenade, parks and long views back to the skyline.",
-    image: c1,
+    image: "/dubai creek.avif",
   },
   {
-    slug: "rachid-yachts-and-marina",
-    name: "Rachid Yachts & Marina",
+    slug: "rashid-yachts-and-marina",
+    name: "Rashid Yachts & Marina",
     description:
       "A marina address for apartments and penthouses, with berths, a yacht club and a walkable waterfront.",
-    image: c4,
+    image: "/rashid yacht.avif",
   },
   {
     slug: "arabian-ranches-iii",
     name: "Arabian Ranches III",
     description:
       "Family townhouses and villas built around a central park, lazy river and clubhouse, in a mature ranches setting.",
-    image: p1,
+    image: "/arabian ranches.avif",
   },
   {
     slug: "emaar-south",
     name: "Emaar South",
     description:
       "Golf-side homes and apartments close to Al Maktoum International, laid out around parks and community retail.",
-    image: p4,
+    image: "/emaar south.avif",
   },
   {
     slug: "grand-polo-club-and-resort",
@@ -254,39 +254,41 @@ export const services: Service[] = [
 export const about = {
   hero: {
     kicker: "About Us",
-    title: "An estate agency built around design, not volume",
-    body: "We represent a small number of homes at a time and give each one the attention it deserves.",
-    image: hero,
-    imageAlt: "Interior of an architect-designed home",
+    title: "Experience that helps you buy, sell and rent smarter",
+    body: "With deep knowledge of Emaar communities, we focus on the right property, the right advice and the right deal.",
+    image: "/about us.jpeg",
+    imageAlt: "Parkwood Properties office and team",
   },
   intro: {
     title: "Who we are",
     body: [
-      "Parkwood Properties is a Dubai property consultancy working across Emaar's masterplanned communities. We advise buyers, sellers, landlords and tenants on homes where architecture and everyday living matter equally.",
-      "Our team comes from architecture, publishing and brokerage. That mix shapes how we photograph a home, how we describe it, and how we advise on price.",
+      "Parkwood Properties is a Dubai property consultancy specializing in the secondary market, with a focus on Emaar's master planned communities.",
+      "We advise buyers, sellers, landlords and tenants on residential property, providing practical guidance on pricing, positioning, negotiations and the transaction process.",
+      "Our approach is shaped by experience in property development and real estate, giving us a practical understanding of both the property itself and its position in the market.",
     ],
   },
   story: {
     title: "Our story",
     body: [
-      "We started with a simple observation: the best homes in the city were being sold with the same twelve photographs and the same paragraph of copy as everything else.",
-      "So we built an agency around the opposite instinct — fewer listings, better documentation, and honest counsel about what a property is actually worth.",
+      "Parkwood began with a simple belief: a property is more than a listing on a portal. Behind every address is a place, a decision, and a chapter in someone's life.",
+      "Our journey into real estate has taken us through property development and the secondary market, where no two homes, circumstances or decisions are quite the same. Along the way, we learned that good advice often comes down to seeing the details others overlook — understanding the home, reading the market and knowing when to speak plainly.",
+      "Parkwood was built from that experience: a property consultancy shaped by a quieter, more considered way of doing real estate.",
     ],
-    image: p6,
-    imageAlt: "Converted barn with timber and glass elevation",
+    image: "/our story.jpeg",
+    imageAlt: "Parkwood Properties — our story",
   },
   values: [
     {
-      title: "Considered selection",
-      body: "We take on homes we would happily live in ourselves, and say so plainly when a property is not right.",
+      title: "Look beyond the listing",
+      body: "We begin with the property itself — its condition, setting, strengths and limitations — then place it in the context of the wider market.",
     },
     {
-      title: "Documented properly",
-      body: "Every home is photographed and written in-house, with plans, materials and orientation recorded.",
+      title: "Price with perspective",
+      body: "Good advice starts with a realistic view of value. We consider comparable properties, current demand and market conditions to arrive at a position that makes sense.",
     },
     {
-      title: "Advice, then transaction",
-      body: "Valuations, mortgage guidance and handover support come before any push to close.",
+      title: "Stay with the process",
+      body: "A property transaction is rarely just one decision. From the first conversation through viewings, negotiation, documentation and handover, we remain involved and keep the process moving with clarity.",
     },
   ],
   closing: {

@@ -101,7 +101,6 @@ function CommunityNotFound() {
 
 function CommunityDetailPage() {
   const { community } = Route.useLoaderData();
-  const [first, ...rest]: string[] = community.overview.paragraphs;
 
   return (
     <main>
@@ -115,15 +114,14 @@ function CommunityDetailPage() {
             Back to communities
           </Link>
 
-          <h1 className="display mt-6 text-2xl sm:mt-8 sm:text-3xl md:text-[2.6rem]">{community.name}</h1>
+          <h1 className="display mt-6 font-medium text-2xl sm:mt-8 sm:text-3xl md:text-[2.6rem]">{community.name}</h1>
 
-          <div className="mt-10 max-w-3xl">
-            <h2 className="label border-b border-foreground/30 pb-2">
-              {community.overview.heading}
-            </h2>
-            {first ? (
-              <p className="mt-5 text-base leading-relaxed text-muted-foreground sm:mt-6 sm:text-lg">{first}</p>
-            ) : null}
+          <div className="mt-10 max-w-full space-y-5">
+            {community.overview.paragraphs.map((p) => (
+              <p key={p} className="text-base leading-relaxed text-muted-foreground sm:text-lg">
+                {p}
+              </p>
+            ))}
           </div>
         </div>
       </section>
@@ -147,11 +145,14 @@ function CommunityDetailPage() {
         </figure>
       ) : null}
 
-      {rest.length ? (
+      {community.overview.restParagraphs?.length || community.overview.restHeading ? (
         <section className="px-5 py-12 sm:px-6 sm:py-14 md:px-10 md:py-20">
           <div className="mx-auto max-w-[1400px]">
-            <div className="max-w-3xl space-y-5">
-              {rest.map((p) => (
+            <div className="max-w-full space-y-5">
+              {community.overview.restHeading && (
+                <h3 className="display uppercase mt-2 mb-8 text-2xl sm:text-3xl md:text-4xl">{community.overview.restHeading}</h3>
+              )}
+              {community.overview.restParagraphs?.map((p) => (
                 <p key={p} className="text-base leading-relaxed text-muted-foreground sm:text-lg">
                   {p}
                 </p>
@@ -163,8 +164,8 @@ function CommunityDetailPage() {
 
       {community.amenities ? (
         <SectionBlock tone="accent">
-          <div className="max-w-3xl">
-            <h2 className="label border-b border-foreground/30 pb-2">
+          <div className="max-w-full">
+            <h2 className="label font-bold border-b border-foreground/30 pb-2">
               {community.amenities.heading}
             </h2>
             <p className="mt-5 text-base leading-relaxed text-muted-foreground sm:mt-6 sm:text-lg">
