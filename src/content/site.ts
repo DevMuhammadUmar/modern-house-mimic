@@ -10,6 +10,9 @@ import c1 from "@/assets/c1.jpg";
 import c2 from "@/assets/c2.jpg";
 import c3 from "@/assets/c3.jpg";
 import c4 from "@/assets/c4.jpg";
+import beachfrontAsset from "@/assets/beachfront.avif.asset.json";
+import grandPoloAsset from "@/assets/grand-polo.jpeg.asset.json";
+import theValleyAsset from "@/assets/the-valley.jpg.asset.json";
 
 /**
  * All editable site content lives here.
@@ -141,7 +144,7 @@ export const communities: Community[] = [
     name: "The Valley",
     description:
       "A quieter townhouse and villa community along the Dubai–Al Ain Road, with sports fields, pocket parks and a town centre.",
-    image: "/the valley.avif",
+    image: theValleyAsset.url,
   },
   {
     slug: "dubai-hills-estate",
@@ -190,7 +193,14 @@ export const communities: Community[] = [
     name: "Grand Polo Club & Resort",
     description:
       "An equestrian-led community of low villas, stables and bridle paths, planned around open green space.",
-    image: c2,
+    image: grandPoloAsset.url,
+  },
+  {
+    slug: "emaar-beachfront",
+    name: "Emaar Beachfront",
+    description:
+      "A private island address at Dubai Harbour, with 1.5 km of shoreline, sea-view apartments and easy access to Dubai Marina.",
+    image: beachfrontAsset.url,
   },
 ];
 
@@ -244,7 +254,7 @@ export const services: Service[] = [
     slug: "property-handover",
     title: "Property Handover",
     description:
-      "Snagging, inspection and key collection managed end to end, so a completed home is ready the day you take it on.",
+      "With our extensive experience in Emaar's policies, procedures, and handover requirements, we manage snagging, inspection, and key collection end to end — ensuring your completed home is ready and compliant the day you take it on.",
     image: "/property-handover.jpeg",
     ctaLabel: "Talk to us",
     ctaTo: "/contact",

@@ -117,7 +117,7 @@ function CommunityDetailPage() {
           <h1 className="display mt-6 font-medium text-2xl sm:mt-8 sm:text-3xl md:text-[2.6rem]">{community.name}</h1>
 
           <div className="mt-10 max-w-full space-y-5">
-            {community.overview.paragraphs.map((p) => (
+            {community.overview.paragraphs.map((p: string) => (
               <p key={p} className="text-base leading-relaxed text-muted-foreground sm:text-lg">
                 {p}
               </p>
@@ -152,7 +152,7 @@ function CommunityDetailPage() {
               {community.overview.restHeading && (
                 <h3 className="display uppercase mt-2 mb-8 text-2xl sm:text-3xl md:text-4xl">{community.overview.restHeading}</h3>
               )}
-              {community.overview.restParagraphs?.map((p) => (
+              {community.overview.restParagraphs?.map((p: string) => (
                 <p key={p} className="text-base leading-relaxed text-muted-foreground sm:text-lg">
                   {p}
                 </p>

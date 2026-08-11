@@ -33,10 +33,10 @@ function CommunitiesPage() {
       <PageHero
         kicker="Communities"
         title="Emaar masterplans, read closely"
-        body="Nine communities we know well — their orientation, their architecture and how each one actually lives."
+        body="Communities we know well — their orientation, their architecture and how each one actually lives."
       />
 
-      <SectionBlock title={`${communities.length} communities`}>
+      <SectionBlock>
         <div className="grid gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
           {communities.map((community) => (
             <CommunityCard key={community.slug} community={community} />
