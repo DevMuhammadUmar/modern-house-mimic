@@ -150,6 +150,14 @@
     font-family: var(--font-serif);
     -webkit-font-smoothing: antialiased;
   }
+
+  button,
+  [role="button"],
+  input[type="button"],
+  input[type="submit"],
+  input[type="reset"] {
+    cursor: pointer;
+  }
 }
 
 @layer components {
@@ -177,6 +185,7 @@
     text-transform: uppercase;
     border: 1px solid var(--foreground);
     padding: 0.85rem 1.6rem;
+    cursor: pointer;
     transition:
       background-color 220ms ease,
       color 220ms ease;
