@@ -85,7 +85,16 @@ function RequestAppraisalPage() {
               body="One of our advisers will be in touch within one working day with an appraisal and next steps."
             />
           ) : (
-            <form onSubmit={form.submit} className="space-y-8" noValidate>
+            <form
+              onSubmit={form.submit}
+              className="space-y-8"
+              noValidate
+              name="appraisal"
+              data-netlify="true"
+              data-netlify-honeypot="bot-field"
+            >
+              <input type="hidden" name="form-name" value="appraisal" />
+              <input type="hidden" name="bot-field" />
               <div className="grid gap-6 md:grid-cols-2">
                 <TextField
                   label="Full name"

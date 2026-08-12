@@ -10,7 +10,7 @@ import {
   longTextSchema,
   nameSchema,
   phoneSchema,
-  submitForm,
+  submitNetlifyForm,
   useValidatedForm,
 } from "@/components/site/use-validated-form";
 import { company, nav, socials, type SocialIcon } from "@/content/site";
@@ -59,7 +59,16 @@ function RegisterLaunchesDialog({
             body="We'll be in touch as soon as the next release is announced."
           />
         ) : (
-          <form onSubmit={form.submit} className="space-y-5" noValidate>
+          <form
+            onSubmit={form.submit}
+            className="space-y-5"
+            noValidate
+            name="launches"
+            data-netlify="true"
+            data-netlify-honeypot="bot-field"
+          >
+            <input type="hidden" name="form-name" value="launches" />
+            <input type="hidden" name="bot-field" />
             <TextField
               label="Full name"
               name="fullName"
@@ -140,7 +149,16 @@ function FeedbackDialog({
         {form.done ? (
           <FormSuccess title="Thank you" body="Your feedback has been received — we read every note." />
         ) : (
-          <form onSubmit={form.submit} className="space-y-5" noValidate>
+          <form
+            onSubmit={form.submit}
+            className="space-y-5"
+            noValidate
+            name="feedback"
+            data-netlify="true"
+            data-netlify-honeypot="bot-field"
+          >
+            <input type="hidden" name="form-name" value="feedback" />
+            <input type="hidden" name="bot-field" />
             <TextField
               label="Name"
               name="fullName"
@@ -196,6 +214,9 @@ function Newsletter() {
         <form
           className="mt-4 space-y-3"
           noValidate
+          name="newsletter"
+          data-netlify="true"
+          data-netlify-honeypot="bot-field"
           onSubmit={async (e) => {
             e.preventDefault();
             const parsed = emailSchema.safeParse(value);
@@ -207,7 +228,7 @@ function Newsletter() {
             setSubmitError(undefined);
             setPending(true);
             try {
-              await submitForm("newsletter", { email: parsed.data });
+              await submitNetlifyForm("newsletter", { email: parsed.data });
               setDone(true);
             } catch {
               setSubmitError("Something went wrong. Please try again.");
@@ -216,6 +237,8 @@ function Newsletter() {
             }
           }}
         >
+          <input type="hidden" name="form-name" value="newsletter" />
+          <input type="hidden" name="bot-field" />
           <input
             type="email"
             name="email"

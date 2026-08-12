@@ -126,6 +126,64 @@ function RootShell({ children }: { children: ReactNode }) {
       <body>
         {children}
         <Scripts />
+
+        {/* ─── Netlify Forms shadow registrations ────────────────────────────
+            Netlify's build bot must see static HTML forms to register them.
+            These are hidden and never shown to users. Each mirrors the fields
+            of the real React form so Netlify captures every field correctly.
+        ──────────────────────────────────────────────────────────────────── */}
+        <div hidden aria-hidden="true">
+          {/* Contact form */}
+          <form name="contact" data-netlify="true" data-netlify-honeypot="bot-field">
+            <input type="hidden" name="form-name" value="contact" />
+            <input name="bot-field" />
+            <input name="fullName" />
+            <input name="email" />
+            <input name="phone" />
+            <input name="inquiryType" />
+            <textarea name="message" />
+          </form>
+
+          {/* Appraisal form */}
+          <form name="appraisal" data-netlify="true" data-netlify-honeypot="bot-field">
+            <input type="hidden" name="form-name" value="appraisal" />
+            <input name="bot-field" />
+            <input name="fullName" />
+            <input name="email" />
+            <input name="phone" />
+            <input name="location" />
+            <input name="propertyType" />
+            <input name="requestType" />
+            <textarea name="propertyDetails" />
+            <textarea name="message" />
+          </form>
+
+          {/* Register for new launches form */}
+          <form name="launches" data-netlify="true" data-netlify-honeypot="bot-field">
+            <input type="hidden" name="form-name" value="launches" />
+            <input name="bot-field" />
+            <input name="fullName" />
+            <input name="email" />
+            <input name="phone" />
+            <textarea name="message" />
+          </form>
+
+          {/* Feedback form */}
+          <form name="feedback" data-netlify="true" data-netlify-honeypot="bot-field">
+            <input type="hidden" name="form-name" value="feedback" />
+            <input name="bot-field" />
+            <input name="fullName" />
+            <input name="email" />
+            <textarea name="feedback" />
+          </form>
+
+          {/* Newsletter form */}
+          <form name="newsletter" data-netlify="true" data-netlify-honeypot="bot-field">
+            <input type="hidden" name="form-name" value="newsletter" />
+            <input name="bot-field" />
+            <input name="email" />
+          </form>
+        </div>
       </body>
     </html>
   );
