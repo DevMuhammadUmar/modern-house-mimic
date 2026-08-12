@@ -5,6 +5,14 @@ import { z } from "zod";
 
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { FormSuccess, TextAreaField, TextField } from "@/components/site/form-fields";
+import {
+  emailSchema,
+  longTextSchema,
+  nameSchema,
+  phoneSchema,
+  submitToNetlify,
+  useValidatedForm,
+} from "@/components/site/use-validated-form";
 import { company, nav, socials, type SocialIcon } from "@/content/site";
 
 const socialIcons: Record<SocialIcon, typeof Linkedin> = {
@@ -13,59 +21,11 @@ const socialIcons: Record<SocialIcon, typeof Linkedin> = {
   instagram: Instagram,
 };
 
-const email = z.string().trim().min(1, "Email is required").email("Enter a valid email address").max(255);
-const name = z.string().trim().min(1, "Name is required").max(100, "Keep this under 100 characters");
-const phone = z
-  .string()
-  .trim()
-  .min(6, "Enter a valid phone number")
-  .max(30, "Keep this under 30 characters")
-  .regex(/^[0-9+()\-\s]+$/, "Use digits and + ( ) - only");
-const longText = z.string().trim().max(1000, "Keep this under 1000 characters");
-
-function useValidatedForm<T extends Record<string, string>>(
-  initial: T,
-  schema: z.ZodType<unknown, z.ZodTypeDef, T>,
-) {
-  const [values, setValues] = useState<T>(initial);
-  const [errors, setErrors] = useState<Partial<Record<keyof T, string>>>({});
-  const [done, setDone] = useState(false);
-
-  const set = (key: keyof T) => (v: string) => {
-    setValues((prev) => ({ ...prev, [key]: v }));
-    setErrors((prev) => ({ ...prev, [key]: undefined }));
-  };
-
-  const submit = (e: React.FormEvent) => {
-    e.preventDefault();
-    const parsed = schema.safeParse(values);
-    if (!parsed.success) {
-      const next: Partial<Record<keyof T, string>> = {};
-      for (const issue of parsed.error.issues) {
-        const key = issue.path[0] as keyof T;
-        if (key && !next[key]) next[key] = issue.message;
-      }
-      setErrors(next);
-      return;
-    }
-    setErrors({});
-    setDone(true);
-  };
-
-  const reset = () => {
-    setValues(initial);
-    setErrors({});
-    setDone(false);
-  };
-
-  return { values, errors, done, set, submit, reset };
-}
-
 const launchSchema = z.object({
-  fullName: name,
-  email,
-  phone,
-  message: longText,
+  fullName: nameSchema,
+  email: emailSchema,
+  phone: phoneSchema,
+  message: longTextSchema,
 });
 
 function RegisterLaunchesDialog({
@@ -78,6 +38,7 @@ function RegisterLaunchesDialog({
   const form = useValidatedForm(
     { fullName: "", email: "", phone: "", message: "" },
     launchSchema,
+    "launches",
   );
 
   return (
@@ -101,14 +62,14 @@ function RegisterLaunchesDialog({
           <form onSubmit={form.submit} className="space-y-5" noValidate>
             <TextField
               label="Full name"
-              name="launch-name"
+              name="fullName"
               value={form.values.fullName}
               onChange={form.set("fullName")}
               error={form.errors.fullName}
             />
             <TextField
               label="Email"
-              name="launch-email"
+              name="email"
               type="email"
               value={form.values.email}
               onChange={form.set("email")}
@@ -116,7 +77,7 @@ function RegisterLaunchesDialog({
             />
             <TextField
               label="Phone number"
-              name="launch-phone"
+              name="phone"
               type="tel"
               value={form.values.phone}
               onChange={form.set("phone")}
@@ -124,14 +85,19 @@ function RegisterLaunchesDialog({
             />
             <TextAreaField
               label="Message / property interest"
-              name="launch-message"
+              name="message"
               rows={3}
               value={form.values.message}
               onChange={form.set("message")}
               error={form.errors.message}
             />
-            <button type="submit" className="btn-outline w-full">
-              Register
+            {form.submitError ? (
+              <p role="alert" className="label text-destructive">
+                {form.submitError}
+              </p>
+            ) : null}
+            <button type="submit" className="btn-outline w-full" disabled={form.pending}>
+              {form.pending ? "Sending…" : "Register"}
             </button>
           </form>
         )}
@@ -141,9 +107,9 @@ function RegisterLaunchesDialog({
 }
 
 const feedbackSchema = z.object({
-  fullName: name,
-  email,
-  feedback: longText.min(1, "Please add your feedback"),
+  fullName: nameSchema,
+  email: emailSchema,
+  feedback: longTextSchema.min(1, "Please add your feedback"),
 });
 
 function FeedbackDialog({
@@ -153,7 +119,11 @@ function FeedbackDialog({
   open: boolean;
   onOpenChange: (v: boolean) => void;
 }) {
-  const form = useValidatedForm({ fullName: "", email: "", feedback: "" }, feedbackSchema);
+  const form = useValidatedForm(
+    { fullName: "", email: "", feedback: "" },
+    feedbackSchema,
+    "feedback",
+  );
 
   return (
     <Dialog
@@ -173,14 +143,14 @@ function FeedbackDialog({
           <form onSubmit={form.submit} className="space-y-5" noValidate>
             <TextField
               label="Name"
-              name="feedback-name"
+              name="fullName"
               value={form.values.fullName}
               onChange={form.set("fullName")}
               error={form.errors.fullName}
             />
             <TextField
               label="Email"
-              name="feedback-email"
+              name="email"
               type="email"
               value={form.values.email}
               onChange={form.set("email")}
@@ -188,13 +158,18 @@ function FeedbackDialog({
             />
             <TextAreaField
               label="Feedback"
-              name="feedback-message"
+              name="feedback"
               value={form.values.feedback}
               onChange={form.set("feedback")}
               error={form.errors.feedback}
             />
-            <button type="submit" className="btn-outline w-full">
-              Send feedback
+            {form.submitError ? (
+              <p role="alert" className="label text-destructive">
+                {form.submitError}
+              </p>
+            ) : null}
+            <button type="submit" className="btn-outline w-full" disabled={form.pending}>
+              {form.pending ? "Sending…" : "Send feedback"}
             </button>
           </form>
         )}
@@ -206,6 +181,8 @@ function FeedbackDialog({
 function Newsletter() {
   const [value, setValue] = useState("");
   const [error, setError] = useState<string | undefined>(undefined);
+  const [submitError, setSubmitError] = useState<string | undefined>(undefined);
+  const [pending, setPending] = useState(false);
   const [done, setDone] = useState(false);
 
   return (
@@ -219,19 +196,29 @@ function Newsletter() {
         <form
           className="mt-4 space-y-3"
           noValidate
-          onSubmit={(e) => {
+          onSubmit={async (e) => {
             e.preventDefault();
-            const parsed = email.safeParse(value);
+            const parsed = emailSchema.safeParse(value);
             if (!parsed.success) {
               setError(parsed.error.issues[0]?.message ?? "Enter a valid email address");
               return;
             }
             setError(undefined);
-            setDone(true);
+            setSubmitError(undefined);
+            setPending(true);
+            try {
+              await submitToNetlify("newsletter", { email: parsed.data });
+              setDone(true);
+            } catch {
+              setSubmitError("Something went wrong. Please try again.");
+            } finally {
+              setPending(false);
+            }
           }}
         >
           <input
             type="email"
+            name="email"
             value={value}
             aria-label="Email address"
             aria-invalid={Boolean(error)}
@@ -239,6 +226,7 @@ function Newsletter() {
             onChange={(e) => {
               setValue(e.target.value);
               setError(undefined);
+              setSubmitError(undefined);
             }}
             className="w-full border border-input bg-background px-4 py-3 text-base outline-none focus:border-foreground"
           />
@@ -247,8 +235,13 @@ function Newsletter() {
               {error}
             </p>
           ) : null}
-          <button type="submit" className="btn-outline w-full">
-            Subscribe
+          {submitError ? (
+            <p role="alert" className="label text-destructive">
+              {submitError}
+            </p>
+          ) : null}
+          <button type="submit" className="btn-outline w-full" disabled={pending}>
+            {pending ? "Sending…" : "Subscribe"}
           </button>
         </form>
       )}
@@ -273,8 +266,7 @@ export function Footer() {
               height={816}
               className="h-11 w-auto shrink-0 object-contain sm:h-12 md:h-14"
               style={{
-                filter:
-                  "invert(1)",
+                filter: "invert(1)",
               }}
             />
             <p

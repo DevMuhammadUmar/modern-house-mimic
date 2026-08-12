@@ -66,6 +66,7 @@ function RequestAppraisalPage() {
       message: "",
     },
     schema,
+    "appraisal",
   );
 
   return (
@@ -155,8 +156,18 @@ function RequestAppraisalPage() {
                 error={form.errors.message}
               />
 
-              <button type="submit" className="btn-outline w-full sm:w-auto">
-                Request appraisal
+              {form.submitError ? (
+                <p role="alert" className="label text-destructive">
+                  {form.submitError}
+                </p>
+              ) : null}
+
+              <button
+                type="submit"
+                className="btn-outline w-full sm:w-auto"
+                disabled={form.pending}
+              >
+                {form.pending ? "Sending…" : "Request appraisal"}
               </button>
             </form>
           )}
