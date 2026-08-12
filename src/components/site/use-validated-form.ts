@@ -26,21 +26,38 @@ export const longTextSchema = z.string().trim().max(1000, "Keep this under 1000 
 export const requiredSchema = (label: string) =>
   z.string().trim().min(1, `${label} is required`).max(200, "Keep this under 200 characters");
 
-/** Small client-side form helper: local state, zod validation, success flag. */
+/** POST URL-encoded fields to Netlify Forms detection stub. */
+export async function submitToNetlify(formName: string, values: Record<string, string>) {
+  const body = new URLSearchParams({ "form-name": formName, ...values });
+  const res = await fetch("/__forms.html", {
+    method: "POST",
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    body: body.toString(),
+  });
+  if (!res.ok) {
+    throw new Error("Form submit failed");
+  }
+}
+
+/** Small client-side form helper: local state, zod validation, Netlify submit. */
 export function useValidatedForm<T extends Record<string, string>>(
   initial: T,
   schema: z.ZodType<unknown, z.ZodTypeDef, T>,
+  formName: string,
 ) {
   const [values, setValues] = useState<T>(initial);
   const [errors, setErrors] = useState<Partial<Record<keyof T, string>>>({});
   const [done, setDone] = useState(false);
+  const [pending, setPending] = useState(false);
+  const [submitError, setSubmitError] = useState<string | undefined>(undefined);
 
   const set = (key: keyof T) => (v: string) => {
     setValues((prev) => ({ ...prev, [key]: v }));
     setErrors((prev) => ({ ...prev, [key]: undefined }));
+    setSubmitError(undefined);
   };
 
-  const submit = (e: React.FormEvent) => {
+  const submit = async (e: React.FormEvent) => {
     e.preventDefault();
     const parsed = schema.safeParse(values);
     if (!parsed.success) {
@@ -53,14 +70,25 @@ export function useValidatedForm<T extends Record<string, string>>(
       return;
     }
     setErrors({});
-    setDone(true);
+    setSubmitError(undefined);
+    setPending(true);
+    try {
+      await submitToNetlify(formName, values);
+      setDone(true);
+    } catch {
+      setSubmitError("Something went wrong. Please try again.");
+    } finally {
+      setPending(false);
+    }
   };
 
   const reset = () => {
     setValues(initial);
     setErrors({});
     setDone(false);
+    setPending(false);
+    setSubmitError(undefined);
   };
 
-  return { values, errors, done, set, submit, reset };
+  return { values, errors, done, pending, submitError, set, submit, reset };
 }

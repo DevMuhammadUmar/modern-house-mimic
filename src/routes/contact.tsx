@@ -53,6 +53,7 @@ function ContactPage() {
   const form = useValidatedForm(
     { fullName: "", email: "", phone: "", inquiryType: "", message: "" },
     schema,
+    "contact",
   );
 
   return (
@@ -116,8 +117,18 @@ function ContactPage() {
                   error={form.errors.message}
                 />
 
-                <button type="submit" className="btn-outline w-full sm:w-auto">
-                  Send message
+                {form.submitError ? (
+                  <p role="alert" className="label text-destructive">
+                    {form.submitError}
+                  </p>
+                ) : null}
+
+                <button
+                  type="submit"
+                  className="btn-outline w-full sm:w-auto"
+                  disabled={form.pending}
+                >
+                  {form.pending ? "Sending…" : "Send message"}
                 </button>
               </form>
             )}
