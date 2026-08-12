@@ -51,7 +51,9 @@ function AboutPage() {
       {/* ── Who We Are ── */}
       <section className="border-t border-border px-6 py-16 sm:px-8 sm:py-20 md:px-10 md:py-28">
         <div className="mx-auto max-w-[1400px]">
-          <h2 className="display text-2xl sm:text-3xl md:text-4xl mb-10">{about.intro.title}</h2>
+          <h2 className="display mb-10 text-center text-2xl sm:text-3xl md:text-4xl">
+            {about.intro.title}
+          </h2>
           <div className="grid gap-8 md:grid-cols-3 md:gap-12">
             {about.intro.body.map((p, i) => (
               <p key={i} className="text-base leading-relaxed text-muted-foreground sm:text-lg border-t border-border pt-6">
@@ -91,7 +93,7 @@ function AboutPage() {
       {/* ── How We Work ── */}
       <section className="border-t border-border px-6 py-16 sm:px-8 sm:py-20 md:px-10 md:py-28">
         <div className="mx-auto max-w-[1400px]">
-          <h2 className="display text-2xl sm:text-3xl md:text-4xl mb-12">How we work</h2>
+          <h2 className="display mb-12 text-center text-2xl sm:text-3xl md:text-4xl">How we work</h2>
           <div className="grid gap-0 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-border">
             {about.values.map((v, i) => (
               <div key={v.title} className="py-8 md:py-0 md:px-10 first:md:pl-0 last:md:pr-0">

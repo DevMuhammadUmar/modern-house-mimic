@@ -26,20 +26,19 @@ export const longTextSchema = z.string().trim().max(1000, "Keep this under 1000 
 export const requiredSchema = (label: string) =>
   z.string().trim().min(1, `${label} is required`).max(200, "Keep this under 200 characters");
 
-/** POST URL-encoded fields to Netlify Forms detection stub. */
-export async function submitToNetlify(formName: string, values: Record<string, string>) {
-  const body = new URLSearchParams({ "form-name": formName, ...values });
-  const res = await fetch("/__forms.html", {
+/** POST form fields to the Netlify Function (Resend). */
+export async function submitForm(formName: string, values: Record<string, string>) {
+  const res = await fetch("/.netlify/functions/submit-form", {
     method: "POST",
-    headers: { "Content-Type": "application/x-www-form-urlencoded" },
-    body: body.toString(),
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ formName, ...values }),
   });
   if (!res.ok) {
     throw new Error("Form submit failed");
   }
 }
 
-/** Small client-side form helper: local state, zod validation, Netlify submit. */
+/** Small client-side form helper: local state, zod validation, email submit. */
 export function useValidatedForm<T extends Record<string, string>>(
   initial: T,
   schema: z.ZodType<unknown, z.ZodTypeDef, T>,
@@ -73,7 +72,7 @@ export function useValidatedForm<T extends Record<string, string>>(
     setSubmitError(undefined);
     setPending(true);
     try {
-      await submitToNetlify(formName, values);
+      await submitForm(formName, values);
       setDone(true);
     } catch {
       setSubmitError("Something went wrong. Please try again.");

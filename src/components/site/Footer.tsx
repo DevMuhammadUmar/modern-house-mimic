@@ -1,4 +1,4 @@
-import { Link } from "@tanstack/react-router";
+import { Link, useRouterState } from "@tanstack/react-router";
 import { Facebook, Instagram, Linkedin } from "lucide-react";
 import { useState } from "react";
 import { z } from "zod";
@@ -10,7 +10,7 @@ import {
   longTextSchema,
   nameSchema,
   phoneSchema,
-  submitToNetlify,
+  submitForm,
   useValidatedForm,
 } from "@/components/site/use-validated-form";
 import { company, nav, socials, type SocialIcon } from "@/content/site";
@@ -207,7 +207,7 @@ function Newsletter() {
             setSubmitError(undefined);
             setPending(true);
             try {
-              await submitToNetlify("newsletter", { email: parsed.data });
+              await submitForm("newsletter", { email: parsed.data });
               setDone(true);
             } catch {
               setSubmitError("Something went wrong. Please try again.");
@@ -252,6 +252,7 @@ function Newsletter() {
 export function Footer() {
   const [launchOpen, setLaunchOpen] = useState(false);
   const [feedbackOpen, setFeedbackOpen] = useState(false);
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
 
   return (
     <footer className="bg-brand px-5 py-12 text-brand-foreground sm:px-6 sm:py-14 md:px-10">
@@ -304,7 +305,15 @@ export function Footer() {
           <ul className="mt-4 space-y-2">
             {nav.map((item) => (
               <li key={item.to}>
-                <Link to={item.to} className="text-base hover:opacity-60">
+                <Link
+                  to={item.to}
+                  className="text-base hover:opacity-60"
+                  onClick={() => {
+                    if (pathname === item.to) {
+                      window.scrollTo({ top: 0, behavior: "smooth" });
+                    }
+                  }}
+                >
                   {item.label}
                 </Link>
               </li>

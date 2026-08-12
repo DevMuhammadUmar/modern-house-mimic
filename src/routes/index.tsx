@@ -142,7 +142,7 @@ function Index() {
       <section className="border-t border-border px-5 py-16 sm:px-6 sm:py-20 md:px-10 md:py-28">
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="display text-2xl sm:text-3xl md:text-4xl">
-            Thinking of selling or renting/leasing?
+            Thinking of selling or leasing?
           </h2>
           <p className="mt-4 text-base leading-relaxed text-muted-foreground sm:mt-5 sm:text-lg">
             We photograph, write and place each home ourselves — and advise honestly on price before

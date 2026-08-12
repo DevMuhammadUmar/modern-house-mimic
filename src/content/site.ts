@@ -10,10 +10,6 @@ import c1 from "@/assets/c1.jpg";
 import c2 from "@/assets/c2.jpg";
 import c3 from "@/assets/c3.jpg";
 import c4 from "@/assets/c4.jpg";
-import beachfrontAsset from "@/assets/beachfront.avif.asset.json";
-import grandPoloAsset from "@/assets/grand-polo.jpeg.asset.json";
-import theValleyAsset from "@/assets/the-valley.jpg.asset.json";
-
 /**
  * All editable site content lives here.
  * Replace text and images below without touching any component.
@@ -144,7 +140,7 @@ export const communities: Community[] = [
     name: "The Valley",
     description:
       "A quieter townhouse and villa community along the Dubai–Al Ain Road, with sports fields, pocket parks and a town centre.",
-    image: theValleyAsset.url,
+    image: "/the-valley.jpg",
   },
   {
     slug: "dubai-hills-estate",
@@ -193,14 +189,14 @@ export const communities: Community[] = [
     name: "Grand Polo Club & Resort",
     description:
       "An equestrian-led community of low villas, stables and bridle paths, planned around open green space.",
-    image: grandPoloAsset.url,
+    image: "/grand-polo.jpeg",
   },
   {
     slug: "emaar-beachfront",
     name: "Emaar Beachfront",
     description:
       "A private island address at Dubai Harbour, with 1.5 km of shoreline, sea-view apartments and easy access to Dubai Marina.",
-    image: beachfrontAsset.url,
+    image: "/beachfront.avif",
   },
 ];
 
@@ -302,7 +298,7 @@ export const about = {
     },
   ],
   closing: {
-    title: "Thinking of selling or letting?",
+    title: "Thinking of selling or leasing?",
     body: "Send us a few details about your property and we will come back with an appraisal and a recommended approach.",
     ctaLabel: "Request an appraisal",
     ctaTo: "/request-appraisal" as const,
