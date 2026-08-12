@@ -286,6 +286,33 @@ export const communityDetails: CommunityDetail[] = [
       ]
     }
   }),
+  seed("emaar-beachfront", {
+    overview: {
+      heading: "EMAAR BEACHFRONT",
+      paragraphs: [
+        "EMAAR Beachfront offers a luxurious, private island lifestyle at Dubai Harbour. This exclusive, gated community provides unparalleled access to the city’s premier attractions, including world-class malls, gourmet restaurants, and prestigious yacht clubs. It's an off-plan development by Emaar Properties, strategically located near Sheikh Zayed Road, ensuring a seamless commute to all parts of Dubai. Where the sea greets you every morning, and pristine white sand welcomes you home—on an island with a statement address in Dubai. Awaken your senses with every breath, as you redefine your premium lifestyle, overlooking the majestic Arabian Gulf at Emaar Beachfront.",
+        "Emaar Beachfront brings world-class shopping and entertainment right to your doorstep, part of this meticulously planned off-plan development by Emaar Properties. Imagine waking up to the soothing sounds of the sea every morning and coming home to pristine white sand beaches. This masterfully planned development caters to every aspect of premium living, with proximity to prestigious yacht clubs, gourmet restaurants, and the best shopping malls Dubai has to offer, including those in Palm Jumeirah and Dubai Marina. Whether it's a relaxing day at the beach or a vibrant night out, Emaar Beachfront promises a lifestyle of unparalleled luxury and convenience in one of Dubai's most sought-after neighbourhoods."
+      ],
+      restHeading: "Amenities",
+      restParagraphs: [
+        "Experience unparalleled amenities at Emaar Beachfront, where beachfront living meets luxury. With 1.5 km of pristine shoreline, 27 residential towers offering 10,000 units, and a 13,000 sqm retail mall, every aspect of your lifestyle is catered to within this exclusive community. Enjoy the convenience of having Dubai Marina at your doorstep, breathtaking sea views from apartments designed to maximize the beauty of the Arabian Gulf and easy access to Sheikh Zayed Road for seamless commuting. Emaar Beachfront redefines luxury living with its unmatched amenities and prime location, offering a lifestyle of sophistication and comfort by the sea.",
+        "Near the Emaar Beachfront community, residents and visitors can explore several attractions and leisure destinations including Dubai Marina, a bustling waterfront district with dining, shopping, and entertainment options where you can stroll along the marina promenade, dine at waterfront restaurants, or take boat tours. The Beach at JBR offers a vibrant outdoor experience with restaurants, cafés, shops, and year-round events, while Dubai Marina Mall, situated in the heart of Dubai Marina, provides diverse retail outlets, dining options, a cinema complex, and indoor entertainment facilities. These attractions, combined with the beachfront lifestyle and amenities within the Emaar Beachfront community itself, contribute to a vibrant and dynamic living experience for residents and visitors alike in Dubai Harbour."
+      ]
+    },
+    amenities: {
+      heading: "At a Glance",
+      intro: "Key facts and highlights from the Emaar Beachfront masterplan at Dubai Harbour.",
+      stats: [
+        { icon: "pool", value: "1.5 km", label: "Beachfront" },
+        { icon: "building", value: "27", label: "Residential Towers" },
+        { icon: "building", value: "10,000", label: "Residential Units" },
+        { icon: "retail", value: "13,000 sqm", label: "Retail Mall" },
+        { icon: "area", value: "At Your Doorstep", label: "Dubai Marina" },
+        { icon: "pool", value: "Apartments Overlooking the Sea", label: "Sea Views" },
+        { icon: "plane", value: "To Sheikh Zayed Road", label: "Easy Access" }
+      ]
+    }
+  }),
 ];
 
 export function getCommunityDetail(slug: string): CommunityDetail | undefined {
