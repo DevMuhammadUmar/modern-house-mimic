@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Parkwood Properties — Form Detection</title>
+  </head>
+  <body>
+    <!--
+      Static stubs for Netlify Forms detection at build time.
+      React forms POST URL-encoded data (with matching form-name + fields) to this path.
+    -->
+
+    <form name="contact" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" hidden>
+      <input name="bot-field" />
+      <input name="fullName" />
+      <input name="email" type="email" />
+      <input name="phone" />
+      <input name="inquiryType" />
+      <textarea name="message"></textarea>
+    </form>
+
+    <form name="appraisal" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" hidden>
+      <input name="bot-field" />
+      <input name="fullName" />
+      <input name="email" type="email" />
+      <input name="phone" />
+      <input name="location" />
+      <input name="propertyType" />
+      <input name="requestType" />
+      <textarea name="propertyDetails"></textarea>
+      <textarea name="message"></textarea>
+    </form>
+
+    <form name="launches" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" hidden>
+      <input name="bot-field" />
+      <input name="fullName" />
+      <input name="email" type="email" />
+      <input name="phone" />
+      <textarea name="message"></textarea>
+    </form>
+
+    <form name="feedback" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" hidden>
+      <input name="bot-field" />
+      <input name="fullName" />
+      <input name="email" type="email" />
+      <textarea name="feedback"></textarea>
+    </form>
+
+    <form name="newsletter" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" hidden>
+      <input name="bot-field" />
+      <input name="email" type="email" />
+    </form>
+  </body>
+</html>

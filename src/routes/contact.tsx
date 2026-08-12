@@ -3,6 +3,7 @@ import { z } from "zod";
 
 import {
   FormSuccess,
+  NetlifyFormMeta,
   SelectField,
   TextAreaField,
   TextField,
@@ -73,7 +74,16 @@ function ContactPage() {
                 body="Thank you for getting in touch — we'll reply within one working day."
               />
             ) : (
-              <form onSubmit={form.submit} className="space-y-8" noValidate>
+              <form
+                name="contact"
+                method="POST"
+                data-netlify="true"
+                data-netlify-honeypot="bot-field"
+                onSubmit={form.submit}
+                className="space-y-8"
+                noValidate
+              >
+                <NetlifyFormMeta formName="contact" />
                 <div className="grid gap-6 md:grid-cols-2">
                   <TextField
                     label="Full name"

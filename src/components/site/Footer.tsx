@@ -4,13 +4,18 @@ import { useState } from "react";
 import { z } from "zod";
 
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
-import { FormSuccess, TextAreaField, TextField } from "@/components/site/form-fields";
+import {
+  FormSuccess,
+  NetlifyFormMeta,
+  TextAreaField,
+  TextField,
+} from "@/components/site/form-fields";
 import {
   emailSchema,
   longTextSchema,
   nameSchema,
   phoneSchema,
-  submitForm,
+  submitToNetlify,
   useValidatedForm,
 } from "@/components/site/use-validated-form";
 import { company, nav, socials, type SocialIcon } from "@/content/site";
@@ -59,7 +64,16 @@ function RegisterLaunchesDialog({
             body="We'll be in touch as soon as the next release is announced."
           />
         ) : (
-          <form onSubmit={form.submit} className="space-y-5" noValidate>
+          <form
+            name="launches"
+            method="POST"
+            data-netlify="true"
+            data-netlify-honeypot="bot-field"
+            onSubmit={form.submit}
+            className="space-y-5"
+            noValidate
+          >
+            <NetlifyFormMeta formName="launches" />
             <TextField
               label="Full name"
               name="fullName"
@@ -140,7 +154,16 @@ function FeedbackDialog({
         {form.done ? (
           <FormSuccess title="Thank you" body="Your feedback has been received — we read every note." />
         ) : (
-          <form onSubmit={form.submit} className="space-y-5" noValidate>
+          <form
+            name="feedback"
+            method="POST"
+            data-netlify="true"
+            data-netlify-honeypot="bot-field"
+            onSubmit={form.submit}
+            className="space-y-5"
+            noValidate
+          >
+            <NetlifyFormMeta formName="feedback" />
             <TextField
               label="Name"
               name="fullName"
@@ -194,6 +217,10 @@ function Newsletter() {
         </p>
       ) : (
         <form
+          name="newsletter"
+          method="POST"
+          data-netlify="true"
+          data-netlify-honeypot="bot-field"
           className="mt-4 space-y-3"
           noValidate
           onSubmit={async (e) => {
@@ -207,7 +234,7 @@ function Newsletter() {
             setSubmitError(undefined);
             setPending(true);
             try {
-              await submitForm("newsletter", { email: parsed.data });
+              await submitToNetlify("newsletter", { email: parsed.data });
               setDone(true);
             } catch {
               setSubmitError("Something went wrong. Please try again.");
@@ -216,6 +243,7 @@ function Newsletter() {
             }
           }}
         >
+          <NetlifyFormMeta formName="newsletter" />
           <input
             type="email"
             name="email"

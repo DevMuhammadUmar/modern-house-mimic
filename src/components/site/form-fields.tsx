@@ -3,6 +3,20 @@ import type { ReactNode } from "react";
 const controlBase =
   "w-full border border-input bg-background px-4 py-3 text-base outline-none transition-colors focus:border-foreground";
 
+/** Hidden form-name + honeypot for Netlify Forms AJAX submissions. */
+export function NetlifyFormMeta({ formName }: { formName: string }) {
+  return (
+    <>
+      <input type="hidden" name="form-name" value={formName} />
+      <p className="hidden" aria-hidden="true">
+        <label>
+          Don’t fill this out: <input name="bot-field" tabIndex={-1} autoComplete="off" />
+        </label>
+      </p>
+    </>
+  );
+}
+
 export function Field({
   label,
   htmlFor,
@@ -151,6 +165,7 @@ export function RadioField({
   return (
     <fieldset className="space-y-3">
       <legend className="label text-muted-foreground">{label}</legend>
+      <input type="hidden" name={name} value={value} />
       <div className="flex flex-wrap gap-3">
         {options.map((o) => {
           const active = value === o;

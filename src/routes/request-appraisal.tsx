@@ -3,6 +3,7 @@ import { z } from "zod";
 
 import {
   FormSuccess,
+  NetlifyFormMeta,
   RadioField,
   SelectField,
   TextAreaField,
@@ -85,7 +86,16 @@ function RequestAppraisalPage() {
               body="One of our advisers will be in touch within one working day with an appraisal and next steps."
             />
           ) : (
-            <form onSubmit={form.submit} className="space-y-8" noValidate>
+            <form
+              name="appraisal"
+              method="POST"
+              data-netlify="true"
+              data-netlify-honeypot="bot-field"
+              onSubmit={form.submit}
+              className="space-y-8"
+              noValidate
+            >
+              <NetlifyFormMeta formName="appraisal" />
               <div className="grid gap-6 md:grid-cols-2">
                 <TextField
                   label="Full name"
