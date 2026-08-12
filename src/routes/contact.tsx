@@ -73,7 +73,16 @@ function ContactPage() {
                 body="Thank you for getting in touch — we'll reply within one working day."
               />
             ) : (
-              <form onSubmit={form.submit} className="space-y-8" noValidate>
+              <form
+                onSubmit={form.submit}
+                className="space-y-8"
+                noValidate
+                name="contact"
+                data-netlify="true"
+                data-netlify-honeypot="bot-field"
+              >
+                <input type="hidden" name="form-name" value="contact" />
+                <input type="hidden" name="bot-field" />
                 <div className="grid gap-6 md:grid-cols-2">
                   <TextField
                     label="Full name"
