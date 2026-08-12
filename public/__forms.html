@@ -8,10 +8,12 @@
     <!--
       Static stubs for Netlify Forms detection at build time.
       React forms POST URL-encoded data (with matching form-name + fields) to this path.
+      `subject` overrides the notification email subject line.
     -->
 
     <form name="contact" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" hidden>
       <input name="bot-field" />
+      <input name="subject" type="hidden" />
       <input name="fullName" />
       <input name="email" type="email" />
       <input name="phone" />
@@ -21,6 +23,7 @@
 
     <form name="appraisal" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" hidden>
       <input name="bot-field" />
+      <input name="subject" type="hidden" />
       <input name="fullName" />
       <input name="email" type="email" />
       <input name="phone" />
@@ -33,6 +36,7 @@
 
     <form name="launches" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" hidden>
       <input name="bot-field" />
+      <input name="subject" type="hidden" />
       <input name="fullName" />
       <input name="email" type="email" />
       <input name="phone" />
@@ -41,6 +45,7 @@
 
     <form name="feedback" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" hidden>
       <input name="bot-field" />
+      <input name="subject" type="hidden" />
       <input name="fullName" />
       <input name="email" type="email" />
       <textarea name="feedback"></textarea>
@@ -48,6 +53,7 @@
 
     <form name="newsletter" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" hidden>
       <input name="bot-field" />
+      <input name="subject" type="hidden" />
       <input name="email" type="email" />
     </form>
   </body>

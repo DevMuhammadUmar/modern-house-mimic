@@ -26,11 +26,30 @@ export const longTextSchema = z.string().trim().max(1000, "Keep this under 1000 
 export const requiredSchema = (label: string) =>
   z.string().trim().min(1, `${label} is required`).max(200, "Keep this under 200 characters");
 
+function emailSubject(formName: string, values: Record<string, string>) {
+  const name = values["fullName"]?.trim() || "Unknown";
+  switch (formName) {
+    case "contact":
+      return `Contact — ${values["inquiryType"]?.trim() || "Inquiry"} — ${name}`;
+    case "appraisal":
+      return `Appraisal — ${values["requestType"]?.trim() || "Request"} — ${name}`;
+    case "launches":
+      return `New launches — ${name}`;
+    case "feedback":
+      return `Feedback — ${name}`;
+    case "newsletter":
+      return `Newsletter signup — ${values["email"]?.trim() || "Unknown"}`;
+    default:
+      return `Form submission — ${formName}`;
+  }
+}
+
 /** POST URL-encoded fields to Netlify Forms (detection stub in public/__forms.html). */
 export async function submitToNetlify(formName: string, values: Record<string, string>) {
   const body = new URLSearchParams({
     "form-name": formName,
     "bot-field": "",
+    subject: emailSubject(formName, values),
     ...values,
   });
 
