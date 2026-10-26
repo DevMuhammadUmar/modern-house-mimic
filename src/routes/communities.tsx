@@ -3,27 +3,16 @@ import { createFileRoute } from "@tanstack/react-router";
 import { CommunityCard } from "@/components/site/CommunityCard";
 import { PageHero, SectionBlock } from "@/components/site/sections";
 import { communities } from "@/content/site";
+import { buildHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/communities")({
-  head: () => ({
-    meta: [
-      { title: "Communities — Emaar Masterplans in Dubai" },
-      {
-        name: "description",
-        content:
-          "Explore Emaar communities including Dubai Creek Harbour, Dubai Hills Estate, The Oasis, The Valley, Emaar South and Downtown Dubai.",
-      },
-      { property: "og:title", content: "Communities — Emaar Masterplans in Dubai" },
-      {
-        property: "og:description",
-        content: "A selection of Emaar masterplanned communities we advise on across Dubai.",
-      },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-      { property: "og:url", content: "https://modern-house-mimic.lovable.app/communities" },
-    ],
-    links: [{ rel: "canonical", href: "https://modern-house-mimic.lovable.app/communities" }],
-  }),
+  head: () =>
+    buildHead({
+      title: "Communities \u2014 Emaar Masterplans in Dubai",
+      description:
+        "Explore Emaar communities including Dubai Creek Harbour, Dubai Hills Estate, The Oasis, The Valley, Emaar South and Downtown Dubai.",
+      path: "/communities",
+    }),
   component: CommunitiesPage,
 });
 

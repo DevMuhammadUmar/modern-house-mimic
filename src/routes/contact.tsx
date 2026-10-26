@@ -18,27 +18,16 @@ import {
   useValidatedForm,
 } from "@/components/site/use-validated-form";
 import { company, inquiryTypes } from "@/content/site";
+import { buildHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/contact")({
-  head: () => ({
-    meta: [
-      { title: "Contact Us — Parkwood Properties Dubai" },
-      {
-        name: "description",
-        content:
-          "Get in touch with Parkwood Properties about a property, a career, feedback or a general enquiry. We reply within one working day.",
-      },
-      { property: "og:title", content: "Contact Us — Parkwood Properties Dubai" },
-      {
-        property: "og:description",
-        content: "Send us a property, career, feedback or general enquiry.",
-      },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-      { property: "og:url", content: "https://modern-house-mimic.lovable.app/contact" },
-    ],
-    links: [{ rel: "canonical", href: "https://modern-house-mimic.lovable.app/contact" }],
-  }),
+  head: () =>
+    buildHead({
+      title: "Contact Us \u2014 Parkwood Properties Dubai",
+      description:
+        "Get in touch with Parkwood Properties about a property, a career, feedback or a general enquiry. We reply within one working day.",
+      path: "/contact",
+    }),
   component: ContactPage,
 });
 

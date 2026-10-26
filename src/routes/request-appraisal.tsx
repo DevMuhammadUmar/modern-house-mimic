@@ -19,27 +19,16 @@ import {
   useValidatedForm,
 } from "@/components/site/use-validated-form";
 import { propertyTypes } from "@/content/site";
+import { buildHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/request-appraisal")({
-  head: () => ({
-    meta: [
-      { title: "Request an Appraisal — Sale or Rental Valuation" },
-      {
-        name: "description",
-        content:
-          "Request a sale or rental appraisal for your Dubai property. Share the details and we'll come back with a considered valuation.",
-      },
-      { property: "og:title", content: "Request an Appraisal — Sale or Rental Valuation" },
-      {
-        property: "og:description",
-        content: "Tell us about your property and we'll prepare a sale or rental valuation.",
-      },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-      { property: "og:url", content: "https://modern-house-mimic.lovable.app/request-appraisal" },
-    ],
-    links: [{ rel: "canonical", href: "https://modern-house-mimic.lovable.app/request-appraisal" }],
-  }),
+  head: () =>
+    buildHead({
+      title: "Request an Appraisal \u2014 Sale or Rental Valuation",
+      description:
+        "Request a sale or rental appraisal for your Dubai property. Share the details and we'll come back with a considered valuation.",
+      path: "/request-appraisal",
+    }),
   component: RequestAppraisalPage,
 });
 

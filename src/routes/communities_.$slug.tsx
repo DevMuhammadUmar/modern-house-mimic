@@ -16,8 +16,7 @@ import type { ComponentType } from "react";
 import { SectionBlock } from "@/components/site/sections";
 import type { CommunityStat } from "@/content/communities";
 import { getCommunityDetail } from "@/content/communities";
-
-const SITE = "https://modern-house-mimic.lovable.app";
+import { absoluteUrl, DEFAULT_OG_IMAGE, SITE_URL } from "@/lib/seo";
 
 const icons: Record<string, ComponentType<{ className?: string }>> = {
   area: LandPlot,
@@ -47,6 +46,8 @@ export const Route = createFileRoute("/communities_/$slug")({
       community.overview.paragraphs[0]?.slice(0, 155) ??
       `${community.name} — a Dubai community we advise on.`;
     const title = `${community.name} — Community Guide | Parkwood Properties`;
+    const communityUrl = absoluteUrl(`/communities/${community.slug}`);
+    const shareImage = community.heroImage ? absoluteUrl(community.heroImage) : DEFAULT_OG_IMAGE;
     return {
       meta: [
         { title },
@@ -54,10 +55,15 @@ export const Route = createFileRoute("/communities_/$slug")({
         { property: "og:title", content: title },
         { property: "og:description", content: description },
         { property: "og:type", content: "article" },
+        { property: "og:url", content: communityUrl },
+        { property: "og:site_name", content: "Park Wood Properties" },
+        { property: "og:image", content: shareImage },
         { name: "twitter:card", content: "summary_large_image" },
-        { property: "og:url", content: `${SITE}/communities/${community.slug}` },
+        { name: "twitter:title", content: title },
+        { name: "twitter:description", content: description },
+        { name: "twitter:image", content: shareImage },
       ],
-      links: [{ rel: "canonical", href: `${SITE}/communities/${community.slug}` }],
+      links: [{ rel: "canonical", href: communityUrl }],
       scripts: [
         {
           type: "application/ld+json",
@@ -65,13 +71,13 @@ export const Route = createFileRoute("/communities_/$slug")({
             "@context": "https://schema.org",
             "@type": "BreadcrumbList",
             itemListElement: [
-              { "@type": "ListItem", position: 1, name: "Home", item: `${SITE}/` },
-              { "@type": "ListItem", position: 2, name: "Communities", item: `${SITE}/communities` },
+              { "@type": "ListItem", position: 1, name: "Home", item: `${SITE_URL}/` },
+              { "@type": "ListItem", position: 2, name: "Communities", item: absoluteUrl("/communities") },
               {
                 "@type": "ListItem",
                 position: 3,
                 name: community.name,
-                item: `${SITE}/communities/${community.slug}`,
+                item: communityUrl,
               },
             ],
           }),

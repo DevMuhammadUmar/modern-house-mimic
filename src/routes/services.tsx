@@ -2,27 +2,16 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 
 import { PageHero, SectionBlock } from "@/components/site/sections";
 import { services } from "@/content/site";
+import { buildHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/services")({
-  head: () => ({
-    meta: [
-      { title: "Services — Buy, Sell, Rent, Mortgage & Handover" },
-      {
-        name: "description",
-        content:
-          "Parkwood Properties services: buying, selling, renting, mortgage guidance and property handover across Dubai's Emaar communities.",
-      },
-      { property: "og:title", content: "Services — Buy, Sell, Rent, Mortgage & Handover" },
-      {
-        property: "og:description",
-        content: "Five services, handled in-house: Buy, Sell, Rent, Mortgage and Property Handover.",
-      },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-      { property: "og:url", content: "https://modern-house-mimic.lovable.app/services" },
-    ],
-    links: [{ rel: "canonical", href: "https://modern-house-mimic.lovable.app/services" }],
-  }),
+  head: () =>
+    buildHead({
+      title: "Services \u2014 Buy, Sell, Rent, Mortgage & Handover",
+      description:
+        "Parkwood Properties services: buying, selling, renting, mortgage guidance and property handover across Dubai's Emaar communities.",
+      path: "/services",
+    }),
   component: ServicesPage,
 });
 
