@@ -1,27 +1,16 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 
 import { about } from "@/content/site";
+import { buildHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/about")({
-  head: () => ({
-    meta: [
-      { title: "About Us — Parkwood Properties Property Consultancy" },
-      {
-        name: "description",
-        content:
-          "Parkwood Properties is a Dubai property consultancy for design-led living, advising on homes across Emaar's masterplanned communities.",
-      },
-      { property: "og:title", content: "About Us — Parkwood Properties Property Consultancy" },
-      {
-        property: "og:description",
-        content: "Who we are, how we work, and why we take on fewer homes with more care.",
-      },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-      { property: "og:url", content: "https://modern-house-mimic.lovable.app/about" },
-    ],
-    links: [{ rel: "canonical", href: "https://modern-house-mimic.lovable.app/about" }],
-  }),
+  head: () =>
+    buildHead({
+      title: "About Us \u2014 Parkwood Properties Property Consultancy",
+      description:
+        "Parkwood Properties is a Dubai property consultancy for design-led living, advising on homes across Emaar's masterplanned communities.",
+      path: "/about",
+    }),
   component: AboutPage,
 });
 

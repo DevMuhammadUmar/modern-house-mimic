@@ -3,34 +3,17 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { Carousel, CarouselItem } from "@/components/site/Carousel";
 import { CommunityCard } from "@/components/site/CommunityCard";
 import { communities, company, featuredHero, services } from "@/content/site";
-
-const SITE = "https://modern-house-mimic.lovable.app";
+import { buildHead, SITE_URL, absoluteUrl } from "@/lib/seo";
 
 export const Route = createFileRoute("/")({
   head: () => ({
-    meta: [
-      { title: "Parkwood Properties — Built on Trust, Backed by Experience" },
-      {
-        name: "description",
-        content:
-          "Parkwood Properties advises on homes across Dubai's leading communities — Downtown Dubai, Dubai Hills Estate, The Oasis, Dubai Creek Harbour and more.",
-      },
-      {
-        property: "og:title",
-        content: "Parkwood Properties — Built on Trust, Backed by Experience",
-      },
-      {
-        property: "og:description",
-        content:
-          "Buy, sell, rent, finance and hand over homes across Dubai's masterplanned communities.",
-      },
-      { property: "og:type", content: "website" },
-      { property: "og:url", content: `${SITE}/` },
-      { property: "og:image", content: `${SITE}/hero.jpeg` },
-      { name: "twitter:image", content: `${SITE}/hero.jpeg` },
-      { name: "twitter:card", content: "summary_large_image" },
-    ],
-    links: [{ rel: "canonical", href: `${SITE}/` }],
+    ...buildHead({
+      title: "Parkwood Properties",
+      description:
+        "Parkwood Properties advises on homes across Dubai's leading communities \u2014 Downtown Dubai, Dubai Hills Estate, The Oasis, Dubai Creek Harbour and more.",
+      path: "/",
+      image: absoluteUrl("/social.jpg"),
+    }),
     scripts: [
       {
         type: "application/ld+json",
@@ -39,9 +22,9 @@ export const Route = createFileRoute("/")({
           "@type": "RealEstateAgent",
           name: company.name,
           slogan: company.tagline,
-          url: SITE,
+          url: SITE_URL,
           email: company.email,
-          image: `${SITE}/hero.jpeg`,
+          image: absoluteUrl("/hero.jpeg"),
           areaServed: "Dubai, United Arab Emirates",
           sameAs: [
             "https://www.linkedin.com/company/parkwood-properties-dubai/",

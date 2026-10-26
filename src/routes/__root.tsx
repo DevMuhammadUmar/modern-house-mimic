@@ -10,7 +10,7 @@ import {
 import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
-import { reportLovableError } from "../lib/lovable-error-reporting";
+import { reportError } from "../lib/error-reporting";
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 
@@ -41,7 +41,7 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   console.error(error);
   const router = useRouter();
   useEffect(() => {
-    reportLovableError(error, { boundary: "tanstack_root_error_component" });
+    reportError(error);
   }, [error]);
 
   return (
@@ -80,21 +80,31 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Parkwood Properties — Built on Trust, Backed by Experience" },
+      { title: "Parkwood Properties" },
       {
         name: "description",
         content:
           "Parkwood Properties: buying, selling, renting, mortgage and handover across Dubai's leading masterplanned communities.",
       },
       { name: "author", content: "Parkwood Properties" },
-      { property: "og:title", content: "Parkwood Properties — Built on Trust, Backed by Experience" },
+      { property: "og:site_name", content: "Park Wood Properties" },
+      { property: "og:title", content: "Parkwood Properties" },
       {
         property: "og:description",
         content:
           "Buy, sell, rent, finance and hand over homes across Dubai's leading masterplanned communities.",
       },
       { property: "og:type", content: "website" },
+      { property: "og:url", content: "https://parkwoodproperties.ae" },
+      { property: "og:image", content: "https://parkwoodproperties.ae/social.jpg" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Parkwood Properties" },
+      {
+        name: "twitter:description",
+        content:
+          "Buy, sell, rent, finance and hand over homes across Dubai's leading masterplanned communities.",
+      },
+      { name: "twitter:image", content: "https://parkwoodproperties.ae/social.jpg" },
     ],
     links: [
       {
@@ -107,7 +117,25 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         rel: "stylesheet",
         href: "https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Jost:wght@400;500&display=swap",
       },
+      { rel: "icon", href: "/favicon.ico", sizes: "any" },
       { rel: "icon", href: "/favicon.png", type: "image/png" },
+      { rel: "icon", type: "image/png", sizes: "32x32", href: "/favicon-32x32.png" },
+      { rel: "icon", type: "image/png", sizes: "16x16", href: "/favicon-16x16.png" },
+      { rel: "apple-touch-icon", sizes: "180x180", href: "/apple-touch-icon.png" },
+      { rel: "manifest", href: "/site.webmanifest" },
+    ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          name: "Park Wood Properties",
+          url: "https://parkwoodproperties.ae",
+          description:
+            "Dubai property consultancy advising on homes across Emaar's masterplanned communities.",
+        }),
+      },
     ],
   }),
 

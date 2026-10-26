@@ -1,26 +1,16 @@
 import { createFileRoute } from "@tanstack/react-router";
 
 import { PageHero, SectionBlock } from "@/components/site/sections";
+import { buildHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/terms-and-conditions")({
-  head: () => ({
-    meta: [
-      { title: "Terms & Conditions — Parkwood Properties" },
-      {
-        name: "description",
-        content: "The terms governing use of the Parkwood Properties website and our property services.",
-      },
-      { property: "og:title", content: "Terms & Conditions — Parkwood Properties" },
-      {
-        property: "og:description",
-        content: "Terms governing use of this website and our property services.",
-      },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-      { property: "og:url", content: "https://modern-house-mimic.lovable.app/terms-and-conditions" },
-    ],
-    links: [{ rel: "canonical", href: "https://modern-house-mimic.lovable.app/terms-and-conditions" }],
-  }),
+  head: () =>
+    buildHead({
+      title: "Terms & Conditions \u2014 Parkwood Properties",
+      description:
+        "The terms governing use of the Parkwood Properties website and our property services.",
+      path: "/terms-and-conditions",
+    }),
   component: TermsPage,
 });
 

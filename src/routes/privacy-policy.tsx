@@ -1,27 +1,16 @@
 import { createFileRoute } from "@tanstack/react-router";
 
 import { PageHero, SectionBlock } from "@/components/site/sections";
+import { buildHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/privacy-policy")({
-  head: () => ({
-    meta: [
-      { title: "Privacy Policy — Parkwood Properties" },
-      {
-        name: "description",
-        content:
-          "How Parkwood Properties collects, uses and protects personal information submitted through this website.",
-      },
-      { property: "og:title", content: "Privacy Policy — Parkwood Properties" },
-      {
-        property: "og:description",
-        content: "How we handle personal information submitted through this website.",
-      },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-      { property: "og:url", content: "https://modern-house-mimic.lovable.app/privacy-policy" },
-    ],
-    links: [{ rel: "canonical", href: "https://modern-house-mimic.lovable.app/privacy-policy" }],
-  }),
+  head: () =>
+    buildHead({
+      title: "Privacy Policy \u2014 Parkwood Properties",
+      description:
+        "How Parkwood Properties collects, uses and protects personal information submitted through this website.",
+      path: "/privacy-policy",
+    }),
   component: PrivacyPolicyPage,
 });
 
