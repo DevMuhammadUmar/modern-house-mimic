@@ -80,15 +80,15 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Parkwood Properties" },
+      { title: "Parkwood Properties Dubai" },
       {
         name: "description",
         content:
-          "Parkwood Properties: buying, selling, renting, mortgage and handover across Dubai's leading masterplanned communities.",
+          "Parkwood Properties Dubai: premier real estate advisory for buying, selling, leasing, mortgages, and handovers across Dubai's leading masterplanned communities.",
       },
-      { name: "author", content: "Parkwood Properties" },
-      { property: "og:site_name", content: "Parkwood Properties" },
-      { property: "og:title", content: "Dubai Real Estate & Property Advisory | Parkwood Properties" },
+      { name: "author", content: "Parkwood Properties Dubai" },
+      { property: "og:site_name", content: "Parkwood Properties Dubai" },
+      { property: "og:title", content: "Parkwood Properties Dubai" },
       {
         property: "og:description",
         content:
@@ -99,7 +99,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:image", content: "https://parkwoodproperties.ae/social.jpg" },
       { property: "og:locale", content: "en_AE" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "Dubai Real Estate & Property Advisory | Parkwood Properties" },
+      { name: "twitter:title", content: "Parkwood Properties Dubai" },
       {
         name: "twitter:description",
         content:
@@ -133,7 +133,9 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         children: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "WebSite",
-          name: "Parkwood Properties",
+          "@id": "https://parkwoodproperties.ae/#website",
+          name: "Parkwood Properties Dubai",
+          alternateName: "Parkwood Properties",
           url: "https://parkwoodproperties.ae",
           description:
             "Dubai property consultancy advising on homes across Emaar's masterplanned communities.",

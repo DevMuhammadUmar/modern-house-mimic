@@ -44,6 +44,10 @@ async function check() {
       console.log(`\n--------------------------------------------`);
       console.log(`Route: ${r}`);
       console.log(`  Title: ${titleMatch ? titleMatch[1] : 'MISSING'}`);
+      if (!titleMatch || titleMatch[1] !== 'Parkwood Properties Dubai') {
+        console.error(`  ERROR: Expected title to be "Parkwood Properties Dubai", got: "${titleMatch ? titleMatch[1] : ''}"`);
+        passed = false;
+      }
       console.log(`  Description: ${descMatch ? descMatch[1] : 'MISSING'}`);
       console.log(`  Canonical: ${canonMatch ? canonMatch[1] : 'MISSING'}`);
       console.log(`  H1 (${h1Matches.length}): ${h1Matches.join(' | ')}`);

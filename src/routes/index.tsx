@@ -8,9 +8,9 @@ import { buildHead, SITE_URL, absoluteUrl } from "@/lib/seo";
 export const Route = createFileRoute("/")({
   head: () => ({
     ...buildHead({
-      title: "Dubai Real Estate & Property Advisory | Parkwood Properties",
+      title: "Parkwood Properties Dubai",
       description:
-        "Parkwood Properties advises on buying, selling, leasing, mortgages, and property handover across Dubai's premier masterplanned communities including Downtown Dubai and Dubai Hills Estate.",
+        "Parkwood Properties Dubai is a premier real estate advisory specializing in buying, selling, leasing, mortgages, and property handover across Dubai's leading masterplanned communities.",
       path: "/",
       image: absoluteUrl("/social.jpg"),
     }),
@@ -20,7 +20,11 @@ export const Route = createFileRoute("/")({
         children: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "RealEstateAgent",
-          name: company.name,
+          "@id": "https://parkwoodproperties.ae/#organization",
+          name: "Parkwood Properties Dubai",
+          alternateName: "Parkwood Properties",
+          description:
+            "Parkwood Properties Dubai is a premier property consultancy advising on homes across Emaar's masterplanned communities in Dubai.",
           slogan: company.tagline,
           url: SITE_URL,
           email: company.email,

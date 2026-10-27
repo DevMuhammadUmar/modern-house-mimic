@@ -6,7 +6,7 @@ import { buildHead, SITE_URL } from "@/lib/seo";
 export const Route = createFileRoute("/about")({
   head: () => ({
     ...buildHead({
-      title: "About Parkwood Properties | Dubai Property Consultancy & Advisors",
+      title: "About Us | Parkwood Properties Dubai",
       description:
         "Learn about Parkwood Properties, a Dubai real estate consultancy specializing in secondary market residential property across Emaar's masterplanned communities.",
       path: "/about",
@@ -17,14 +17,21 @@ export const Route = createFileRoute("/about")({
         children: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "AboutPage",
-          name: "About Parkwood Properties",
+          "@id": "https://parkwoodproperties.ae/about#webpage",
+          name: "About Us | Parkwood Properties Dubai",
           url: `${SITE_URL}/about`,
           description:
-            "Parkwood Properties is a Dubai property consultancy specializing in the secondary market, with a focus on Emaar's masterplanned communities.",
+            "Learn about Parkwood Properties, a Dubai real estate consultancy specializing in secondary market residential property across Emaar's masterplanned communities.",
+          isPartOf: {
+            "@type": "WebSite",
+            "@id": "https://parkwoodproperties.ae/#website",
+            name: "Parkwood Properties Dubai",
+            url: SITE_URL,
+          },
           mainEntity: {
-            "@context": "https://schema.org",
             "@type": "RealEstateAgent",
-            name: company.name,
+            "@id": "https://parkwoodproperties.ae/#organization",
+            name: "Parkwood Properties Dubai",
             url: SITE_URL,
             email: company.email,
             areaServed: "Dubai, United Arab Emirates",

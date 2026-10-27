@@ -4,7 +4,7 @@
  */
 
 export const SITE_URL = "https://parkwoodproperties.ae";
-export const SITE_NAME = "Parkwood Properties";
+export const SITE_NAME = "Parkwood Properties Dubai";
 
 /**
  * Returns a full absolute URL for the given path.

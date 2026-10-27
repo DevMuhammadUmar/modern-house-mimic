@@ -16,7 +16,7 @@ import type { ComponentType } from "react";
 import { SectionBlock } from "@/components/site/sections";
 import type { CommunityStat } from "@/content/communities";
 import { getCommunityDetail } from "@/content/communities";
-import { absoluteUrl, DEFAULT_OG_IMAGE, SITE_URL } from "@/lib/seo";
+import { absoluteUrl, DEFAULT_OG_IMAGE, SITE_NAME, SITE_URL } from "@/lib/seo";
 
 const icons: Record<string, ComponentType<{ className?: string }>> = {
   area: LandPlot,
@@ -38,7 +38,7 @@ export const Route = createFileRoute("/communities_/$slug")({
   head: ({ loaderData }) => {
     if (!loaderData) {
       return {
-        meta: [{ title: "Parkwood Properties" }, { name: "robots", content: "noindex" }],
+        meta: [{ title: SITE_NAME }, { name: "robots", content: "noindex" }],
       };
     }
     const { community } = loaderData;
@@ -52,13 +52,13 @@ export const Route = createFileRoute("/communities_/$slug")({
     const shareImage = community.heroImage ? absoluteUrl(community.heroImage) : DEFAULT_OG_IMAGE;
     return {
       meta: [
-        { title: "Parkwood Properties" },
+        { title: SITE_NAME },
         { name: "description", content: description },
         { property: "og:title", content: title },
         { property: "og:description", content: description },
         { property: "og:type", content: "article" },
         { property: "og:url", content: communityUrl },
-        { property: "og:site_name", content: "Parkwood Properties" },
+        { property: "og:site_name", content: SITE_NAME },
         { property: "og:image", content: shareImage },
         { property: "og:locale", content: "en_AE" },
         { name: "twitter:card", content: "summary_large_image" },
