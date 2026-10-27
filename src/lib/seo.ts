@@ -4,7 +4,7 @@
  */
 
 export const SITE_URL = "https://parkwoodproperties.ae";
-export const SITE_NAME = "Park Wood Properties";
+export const SITE_NAME = "Parkwood Properties";
 
 /**
  * Returns a full absolute URL for the given path.
@@ -44,7 +44,7 @@ export function buildHead({ title, description, path, image, type = "website" }:
 
   return {
     meta: [
-      { title },
+      { title: SITE_NAME },
       { name: "description", content: description },
       { property: "og:title", content: title },
       { property: "og:description", content: description },
@@ -52,6 +52,7 @@ export function buildHead({ title, description, path, image, type = "website" }:
       { property: "og:type", content: type },
       { property: "og:site_name", content: SITE_NAME },
       { property: "og:image", content: imageUrl },
+      { property: "og:locale", content: "en_AE" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: title },
       { name: "twitter:description", content: description },

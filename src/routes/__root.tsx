@@ -87,8 +87,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           "Parkwood Properties: buying, selling, renting, mortgage and handover across Dubai's leading masterplanned communities.",
       },
       { name: "author", content: "Parkwood Properties" },
-      { property: "og:site_name", content: "Park Wood Properties" },
-      { property: "og:title", content: "Parkwood Properties" },
+      { property: "og:site_name", content: "Parkwood Properties" },
+      { property: "og:title", content: "Dubai Real Estate & Property Advisory | Parkwood Properties" },
       {
         property: "og:description",
         content:
@@ -97,8 +97,9 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:type", content: "website" },
       { property: "og:url", content: "https://parkwoodproperties.ae" },
       { property: "og:image", content: "https://parkwoodproperties.ae/social.jpg" },
+      { property: "og:locale", content: "en_AE" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "Parkwood Properties" },
+      { name: "twitter:title", content: "Dubai Real Estate & Property Advisory | Parkwood Properties" },
       {
         name: "twitter:description",
         content:
@@ -117,8 +118,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         rel: "stylesheet",
         href: "https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Jost:wght@400;500&display=swap",
       },
-      { rel: "icon", href: "/favicon.ico", sizes: "any" },
-      { rel: "icon", href: "/favicon.png", type: "image/png" },
+      { rel: "icon", href: "/favicon.ico", sizes: "48x48" },
+      { rel: "icon", type: "image/png", sizes: "48x48", href: "/favicon-48x48.png" },
+      { rel: "icon", type: "image/png", sizes: "96x96", href: "/favicon-96x96.png" },
+      { rel: "icon", type: "image/png", sizes: "192x192", href: "/android-chrome-192x192.png" },
       { rel: "icon", type: "image/png", sizes: "32x32", href: "/favicon-32x32.png" },
       { rel: "icon", type: "image/png", sizes: "16x16", href: "/favicon-16x16.png" },
       { rel: "apple-touch-icon", sizes: "180x180", href: "/apple-touch-icon.png" },
@@ -130,7 +133,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         children: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "WebSite",
-          name: "Park Wood Properties",
+          name: "Parkwood Properties",
           url: "https://parkwoodproperties.ae",
           description:
             "Dubai property consultancy advising on homes across Emaar's masterplanned communities.",

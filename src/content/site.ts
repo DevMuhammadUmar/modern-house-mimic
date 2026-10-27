@@ -205,6 +205,7 @@ export type Service = {
   title: string;
   description: string;
   image: string;
+  imageAlt?: string;
   ctaLabel?: string;
   ctaTo?: string;
 };
@@ -216,6 +217,7 @@ export const services: Service[] = [
     description:
       "We shortlist, view and negotiate on your behalf — from off-plan releases to resale homes in established communities.",
     image: "/buy.jpeg",
+    imageAlt: "Luxury Dubai residential property for sale",
     ctaLabel: "Talk to us",
     ctaTo: "/contact",
   },
@@ -225,6 +227,7 @@ export const services: Service[] = [
     description:
       "Photography, copy and placement handled in-house, with a considered launch to a design-minded audience.",
     image: "/sell.jpeg",
+    imageAlt: "Contemporary Dubai villa prepared for sale",
     ctaLabel: "Request an appraisal",
     ctaTo: "/request-appraisal",
   },
@@ -234,6 +237,7 @@ export const services: Service[] = [
     description:
       "Leasing and letting across apartments, townhouses and villas, including tenant vetting and contract administration.",
     image: "/rent.jpeg",
+    imageAlt: "Modern Dubai apartment available for lease",
     ctaLabel: "Talk to us",
     ctaTo: "/contact",
   },
@@ -243,6 +247,7 @@ export const services: Service[] = [
     description:
       "Independent mortgage guidance: pre-approval, lender comparison and paperwork, coordinated alongside your purchase.",
     image: "/mortgage.jpeg",
+    imageAlt: "Architectural home in Dubai residential community",
     ctaLabel: "Talk to us",
     ctaTo: "/contact",
   },
@@ -252,6 +257,7 @@ export const services: Service[] = [
     description:
       "With our extensive experience in Emaar's policies, procedures, and handover requirements, we manage snagging, inspection, and key collection end to end — ensuring your completed home is ready and compliant the day you take it on.",
     image: "/property-handover.jpeg",
+    imageAlt: "Completed luxury home ready for property handover in Dubai",
     ctaLabel: "Talk to us",
     ctaTo: "/contact",
   },

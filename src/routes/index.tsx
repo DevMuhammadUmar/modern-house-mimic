@@ -8,9 +8,9 @@ import { buildHead, SITE_URL, absoluteUrl } from "@/lib/seo";
 export const Route = createFileRoute("/")({
   head: () => ({
     ...buildHead({
-      title: "Parkwood Properties",
+      title: "Dubai Real Estate & Property Advisory | Parkwood Properties",
       description:
-        "Parkwood Properties advises on homes across Dubai's leading communities \u2014 Downtown Dubai, Dubai Hills Estate, The Oasis, Dubai Creek Harbour and more.",
+        "Parkwood Properties advises on buying, selling, leasing, mortgages, and property handover across Dubai's premier masterplanned communities including Downtown Dubai and Dubai Hills Estate.",
       path: "/",
       image: absoluteUrl("/social.jpg"),
     }),
@@ -25,7 +25,16 @@ export const Route = createFileRoute("/")({
           url: SITE_URL,
           email: company.email,
           image: absoluteUrl("/hero.jpeg"),
-          areaServed: "Dubai, United Arab Emirates",
+          logo: absoluteUrl("/logo.svg"),
+          address: {
+            "@type": "PostalAddress",
+            addressLocality: "Dubai",
+            addressCountry: "AE",
+          },
+          areaServed: {
+            "@type": "AdministrativeArea",
+            name: "Dubai",
+          },
           sameAs: [
             "https://www.linkedin.com/company/parkwood-properties-dubai/",
             "https://www.facebook.com/profile.php?id=61592645326753",
@@ -71,6 +80,7 @@ function Index() {
           alt={featuredHero.imageAlt}
           width={1600}
           height={1104}
+          fetchPriority="high"
           className="h-[42vh] w-full object-cover sm:h-[52vh] md:h-[78vh]"
         />
         <figure className="m-0 flex flex-col justify-center gap-5 bg-brand px-5 py-10 text-brand-foreground sm:gap-6 sm:px-8 sm:py-14 md:px-12">
@@ -103,7 +113,7 @@ function Index() {
                 <div className="h-52 shrink-0 overflow-hidden bg-muted sm:h-64">
                   <img
                     src={service.image}
-                    alt={service.title}
+                    alt={service.imageAlt ?? service.title}
                     loading="lazy"
                     width={1200}
                     height={900}
@@ -124,9 +134,9 @@ function Index() {
 
       <section className="border-t border-border px-5 py-16 sm:px-6 sm:py-20 md:px-10 md:py-28">
         <div className="mx-auto max-w-2xl text-center">
-          <h2 className="display text-2xl sm:text-3xl md:text-4xl">
+          <h1 className="display text-2xl sm:text-3xl md:text-4xl">
             Thinking of selling or leasing?
-          </h2>
+          </h1>
           <p className="mt-4 text-base leading-relaxed text-muted-foreground sm:mt-5 sm:text-lg">
             We photograph, write and place each home ourselves — and advise honestly on price before
             anything goes to market.

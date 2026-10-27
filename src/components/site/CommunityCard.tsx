@@ -14,7 +14,7 @@ export function CommunityCard({ community }: { community: Community }) {
         <div className="h-64 shrink-0 overflow-hidden bg-muted">
           <img
             src={community.image}
-            alt={community.name}
+            alt={`${community.name} community in Dubai`}
             loading="lazy"
             width={1200}
             height={900}

@@ -2,16 +2,30 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 
 import { PageHero, SectionBlock } from "@/components/site/sections";
 import { services } from "@/content/site";
-import { buildHead } from "@/lib/seo";
+import { buildHead, SITE_URL } from "@/lib/seo";
 
 export const Route = createFileRoute("/services")({
-  head: () =>
-    buildHead({
-      title: "Services \u2014 Buy, Sell, Rent, Mortgage & Handover",
+  head: () => ({
+    ...buildHead({
+      title: "Real Estate Services in Dubai | Parkwood Properties",
       description:
-        "Parkwood Properties services: buying, selling, renting, mortgage guidance and property handover across Dubai's Emaar communities.",
+        "Comprehensive Dubai real estate services: property acquisition, sales marketing, residential leasing, independent mortgage advisory, and Emaar handover management.",
       path: "/services",
     }),
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "WebPage",
+          name: "Real Estate Services in Dubai",
+          url: `${SITE_URL}/services`,
+          description:
+            "Comprehensive Dubai real estate services: property acquisition, sales marketing, residential leasing, independent mortgage advisory, and Emaar handover management.",
+        }),
+      },
+    ],
+  }),
   component: ServicesPage,
 });
 
@@ -33,7 +47,7 @@ function ServicesPage() {
             >
               <img
                 src={service.image}
-                alt={service.title}
+                alt={service.imageAlt ?? service.title}
                 loading="lazy"
                 width={1200}
                 height={900}

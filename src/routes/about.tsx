@@ -1,16 +1,38 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 
-import { about } from "@/content/site";
-import { buildHead } from "@/lib/seo";
+import { about, company } from "@/content/site";
+import { buildHead, SITE_URL } from "@/lib/seo";
 
 export const Route = createFileRoute("/about")({
-  head: () =>
-    buildHead({
-      title: "About Us \u2014 Parkwood Properties Property Consultancy",
+  head: () => ({
+    ...buildHead({
+      title: "About Parkwood Properties | Dubai Property Consultancy & Advisors",
       description:
-        "Parkwood Properties is a Dubai property consultancy for design-led living, advising on homes across Emaar's masterplanned communities.",
+        "Learn about Parkwood Properties, a Dubai real estate consultancy specializing in secondary market residential property across Emaar's masterplanned communities.",
       path: "/about",
     }),
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "AboutPage",
+          name: "About Parkwood Properties",
+          url: `${SITE_URL}/about`,
+          description:
+            "Parkwood Properties is a Dubai property consultancy specializing in the secondary market, with a focus on Emaar's masterplanned communities.",
+          mainEntity: {
+            "@context": "https://schema.org",
+            "@type": "RealEstateAgent",
+            name: company.name,
+            url: SITE_URL,
+            email: company.email,
+            areaServed: "Dubai, United Arab Emirates",
+          },
+        }),
+      },
+    ],
+  }),
   component: AboutPage,
 });
 
@@ -25,6 +47,7 @@ function AboutPage() {
             alt={about.hero.imageAlt}
             width={1600}
             height={900}
+            fetchPriority="high"
             className="h-full w-full object-cover"
           />
         </div>

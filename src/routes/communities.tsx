@@ -3,16 +3,30 @@ import { createFileRoute } from "@tanstack/react-router";
 import { CommunityCard } from "@/components/site/CommunityCard";
 import { PageHero, SectionBlock } from "@/components/site/sections";
 import { communities } from "@/content/site";
-import { buildHead } from "@/lib/seo";
+import { buildHead, SITE_URL } from "@/lib/seo";
 
 export const Route = createFileRoute("/communities")({
-  head: () =>
-    buildHead({
-      title: "Communities \u2014 Emaar Masterplans in Dubai",
+  head: () => ({
+    ...buildHead({
+      title: "Dubai Residential Communities & Masterplans | Parkwood Properties",
       description:
-        "Explore Emaar communities including Dubai Creek Harbour, Dubai Hills Estate, The Oasis, The Valley, Emaar South and Downtown Dubai.",
+        "Explore premier Dubai residential masterplans including Downtown Dubai, Dubai Hills Estate, The Oasis, Dubai Creek Harbour, and Emaar Beachfront with expert community insights.",
       path: "/communities",
     }),
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "CollectionPage",
+          name: "Dubai Residential Communities & Masterplans",
+          url: `${SITE_URL}/communities`,
+          description:
+            "Explore premier Dubai residential masterplans including Downtown Dubai, Dubai Hills Estate, The Oasis, Dubai Creek Harbour, and Emaar Beachfront with expert community insights.",
+        }),
+      },
+    ],
+  }),
   component: CommunitiesPage,
 });
 

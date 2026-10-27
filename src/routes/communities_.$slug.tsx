@@ -38,26 +38,29 @@ export const Route = createFileRoute("/communities_/$slug")({
   head: ({ loaderData }) => {
     if (!loaderData) {
       return {
-        meta: [{ title: "Community not found — Parkwood Properties" }, { name: "robots", content: "noindex" }],
+        meta: [{ title: "Parkwood Properties" }, { name: "robots", content: "noindex" }],
       };
     }
     const { community } = loaderData;
+    const rawParagraph = community.overview.paragraphs[0] ?? "";
     const description =
-      community.overview.paragraphs[0]?.slice(0, 155) ??
-      `${community.name} — a Dubai community we advise on.`;
-    const title = `${community.name} — Community Guide | Parkwood Properties`;
+      rawParagraph.length > 155
+        ? `${rawParagraph.slice(0, 152).trim().replace(/[.,;!?]$/, "")}…`
+        : rawParagraph || `${community.name} — premier Dubai masterplanned community guide by Parkwood Properties.`;
+    const title = `${community.name} Community Guide | Parkwood Properties Dubai`;
     const communityUrl = absoluteUrl(`/communities/${community.slug}`);
     const shareImage = community.heroImage ? absoluteUrl(community.heroImage) : DEFAULT_OG_IMAGE;
     return {
       meta: [
-        { title },
+        { title: "Parkwood Properties" },
         { name: "description", content: description },
         { property: "og:title", content: title },
         { property: "og:description", content: description },
         { property: "og:type", content: "article" },
         { property: "og:url", content: communityUrl },
-        { property: "og:site_name", content: "Park Wood Properties" },
+        { property: "og:site_name", content: "Parkwood Properties" },
         { property: "og:image", content: shareImage },
+        { property: "og:locale", content: "en_AE" },
         { name: "twitter:card", content: "summary_large_image" },
         { name: "twitter:title", content: title },
         { name: "twitter:description", content: description },
@@ -137,7 +140,7 @@ function CommunityDetailPage() {
           <div className="aspect-[4/3] w-full overflow-hidden bg-muted sm:aspect-[16/9] lg:aspect-[16/7]">
             <img
               src={community.heroImage}
-              alt={`${community.name} community`}
+              alt={`${community.name} masterplanned community in Dubai`}
               width={1600}
               height={700}
               className="h-full w-full object-cover"
@@ -156,7 +159,7 @@ function CommunityDetailPage() {
           <div className="mx-auto max-w-[1400px]">
             <div className="max-w-full space-y-5">
               {community.overview.restHeading && (
-                <h3 className="display uppercase mt-2 mb-8 text-2xl sm:text-3xl md:text-4xl">{community.overview.restHeading}</h3>
+                <h2 className="display uppercase mt-2 mb-8 text-2xl sm:text-3xl md:text-4xl">{community.overview.restHeading}</h2>
               )}
               {community.overview.restParagraphs?.map((p: string) => (
                 <p key={p} className="text-base leading-relaxed text-muted-foreground sm:text-lg">

@@ -18,16 +18,42 @@ import {
   useValidatedForm,
 } from "@/components/site/use-validated-form";
 import { company, inquiryTypes } from "@/content/site";
-import { buildHead } from "@/lib/seo";
+import { buildHead, SITE_URL } from "@/lib/seo";
 
 export const Route = createFileRoute("/contact")({
-  head: () =>
-    buildHead({
-      title: "Contact Us \u2014 Parkwood Properties Dubai",
+  head: () => ({
+    ...buildHead({
+      title: "Contact Parkwood Properties | Dubai Real Estate Advisory",
       description:
-        "Get in touch with Parkwood Properties about a property, a career, feedback or a general enquiry. We reply within one working day.",
+        "Get in touch with Parkwood Properties in Dubai for property inquiries, advisory services, or appraisals. Our real estate team responds within one working day.",
       path: "/contact",
     }),
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "ContactPage",
+          name: "Contact Parkwood Properties",
+          url: `${SITE_URL}/contact`,
+          description:
+            "Get in touch with Parkwood Properties in Dubai for property inquiries, advisory services, or appraisals. Our real estate team responds within one working day.",
+          mainEntity: {
+            "@context": "https://schema.org",
+            "@type": "RealEstateAgent",
+            name: company.name,
+            url: SITE_URL,
+            email: company.email,
+            address: {
+              "@type": "PostalAddress",
+              addressLocality: "Dubai",
+              addressCountry: "AE",
+            },
+          },
+        }),
+      },
+    ],
+  }),
   component: ContactPage,
 });
 

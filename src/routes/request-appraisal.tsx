@@ -19,16 +19,30 @@ import {
   useValidatedForm,
 } from "@/components/site/use-validated-form";
 import { propertyTypes } from "@/content/site";
-import { buildHead } from "@/lib/seo";
+import { buildHead, SITE_URL } from "@/lib/seo";
 
 export const Route = createFileRoute("/request-appraisal")({
-  head: () =>
-    buildHead({
-      title: "Request an Appraisal \u2014 Sale or Rental Valuation",
+  head: () => ({
+    ...buildHead({
+      title: "Property Valuation & Appraisal in Dubai | Parkwood Properties",
       description:
-        "Request a sale or rental appraisal for your Dubai property. Share the details and we'll come back with a considered valuation.",
+        "Request an accurate sale or rental property appraisal in Dubai. Our advisors evaluate comparable market data to provide honest valuation guidance for your home.",
       path: "/request-appraisal",
     }),
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "WebPage",
+          name: "Property Valuation & Appraisal in Dubai",
+          url: `${SITE_URL}/request-appraisal`,
+          description:
+            "Request an accurate sale or rental property appraisal in Dubai. Our advisors evaluate comparable market data to provide honest valuation guidance for your home.",
+        }),
+      },
+    ],
+  }),
   component: RequestAppraisalPage,
 });
 

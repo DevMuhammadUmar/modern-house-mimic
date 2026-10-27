@@ -18,7 +18,7 @@ export function Header() {
         >
           <img
             src={company.logo}
-            alt=""
+            alt="Parkwood Properties"
             width={816}
             height={816}
             className="h-10 w-auto shrink-0 object-contain sm:h-12 md:h-16"

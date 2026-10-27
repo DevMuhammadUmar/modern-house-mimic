@@ -6,9 +6,9 @@ import { buildHead } from "@/lib/seo";
 export const Route = createFileRoute("/privacy-policy")({
   head: () =>
     buildHead({
-      title: "Privacy Policy \u2014 Parkwood Properties",
+      title: "Privacy Policy | Parkwood Properties Dubai",
       description:
-        "How Parkwood Properties collects, uses and protects personal information submitted through this website.",
+        "Read the Parkwood Properties Privacy Policy to understand how we collect, handle, and safeguard your personal data across our Dubai real estate website and services.",
       path: "/privacy-policy",
     }),
   component: PrivacyPolicyPage,

@@ -6,9 +6,9 @@ import { buildHead } from "@/lib/seo";
 export const Route = createFileRoute("/terms-and-conditions")({
   head: () =>
     buildHead({
-      title: "Terms & Conditions \u2014 Parkwood Properties",
+      title: "Terms & Conditions | Parkwood Properties Dubai",
       description:
-        "The terms governing use of the Parkwood Properties website and our property services.",
+        "Review the terms and conditions governing the use of the Parkwood Properties website and our professional Dubai real estate advisory services.",
       path: "/terms-and-conditions",
     }),
   component: TermsPage,

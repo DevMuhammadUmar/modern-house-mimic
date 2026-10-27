@@ -289,7 +289,7 @@ export function Footer() {
           <div className="flex min-w-0 items-center gap-3">
             <img
               src={company.logo}
-              alt=""
+              alt="Parkwood Properties"
               loading="lazy"
               width={816}
               height={816}
