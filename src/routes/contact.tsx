@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { Globe, Mail, Phone } from "lucide-react";
 import { z } from "zod";
 
 import {
@@ -185,16 +186,12 @@ function ContactPage() {
             <div>
               <h2 className="label text-muted-foreground">Office Phone</h2>
               <p className="mt-3 text-base">
-                <a href={`tel:${company.phone}`} className="hover:opacity-60">
-                  {company.phoneDisplay}
-                </a>
-              </p>
-            </div>
-            <div>
-              <h2 className="label text-muted-foreground">Email</h2>
-              <p className="mt-3 text-base">
-                <a href={`mailto:${company.email}`} className="hover:opacity-60">
-                  {company.email}
+                <a
+                  href={`tel:${company.phone}`}
+                  className="inline-flex items-center gap-2 hover:opacity-60"
+                >
+                  <Phone className="size-4 shrink-0 text-muted-foreground" />
+                  <span>{company.phoneDisplay}</span>
                 </a>
               </p>
             </div>
@@ -207,16 +204,34 @@ function ContactPage() {
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 hover:opacity-60"
                 >
-                  <WhatsAppIcon className="size-4 text-[#25D366]" />
+                  <WhatsAppIcon className="size-4 shrink-0 text-[#25D366]" />
                   <span>{company.whatsappDisplay}</span>
+                </a>
+              </p>
+            </div>
+            <div>
+              <h2 className="label text-muted-foreground">Email</h2>
+              <p className="mt-3 text-base">
+                <a
+                  href={`mailto:${company.email}`}
+                  className="inline-flex items-center gap-2 hover:opacity-60"
+                >
+                  <Mail className="size-4 shrink-0 text-muted-foreground" />
+                  <span>{company.email}</span>
                 </a>
               </p>
             </div>
             <div>
               <h2 className="label text-muted-foreground">Website</h2>
               <p className="mt-3 text-base">
-                <a href={company.websiteHref} className="hover:opacity-60">
-                  {company.website}
+                <a
+                  href={company.websiteHref}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 hover:opacity-60"
+                >
+                  <Globe className="size-4 shrink-0 text-muted-foreground" />
+                  <span>{company.website}</span>
                 </a>
               </p>
             </div>

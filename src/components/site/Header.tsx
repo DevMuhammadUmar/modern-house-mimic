@@ -9,28 +9,28 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-30 border-b border-border bg-background/95 backdrop-blur">
-      <nav className="mx-auto flex max-w-[1400px] items-center justify-between gap-4 px-5 py-4 sm:gap-6 sm:px-6 md:px-10 md:py-5">
+      <nav className="mx-auto flex max-w-[1400px] items-center justify-between gap-4 px-5 py-2.5 sm:gap-6 sm:px-6 md:px-10 md:py-3">
         <Link
           to="/"
           aria-label={`${company.name} home`}
           onClick={() => setOpen(false)}
-          className="flex min-w-0 shrink-0 items-center gap-2 sm:gap-3"
+          className="flex min-w-0 shrink-0 items-center gap-2 sm:gap-2.5"
         >
           <img
             src={company.logo}
             alt="Parkwood Properties"
             width={816}
             height={816}
-            className="h-10 w-auto shrink-0 object-contain sm:h-12 md:h-14"
+            className="h-8 w-auto shrink-0 object-contain sm:h-9 md:h-11"
           />
           <span className="flex min-w-0 flex-col leading-tight">
             <span
-              className="truncate text-[0.8rem] tracking-[0.18em] uppercase sm:text-base sm:tracking-[0.24em] md:text-lg"
+              className="truncate text-[0.75rem] tracking-[0.16em] uppercase sm:text-sm sm:tracking-[0.2em] md:text-base"
               style={{ fontFamily: "var(--font-serif)" }}
             >
               {company.name}
             </span>
-            <span className="label truncate text-[0.5rem] text-muted-foreground sm:text-[0.6rem] md:text-[0.65rem]">
+            <span className="label truncate text-[0.45rem] text-muted-foreground sm:text-[0.55rem] md:text-[0.6rem]">
               {company.tagline}
             </span>
           </span>

@@ -30,10 +30,10 @@ export function WhatsAppFloatingButton() {
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Chat with Parkwood Properties on WhatsApp"
-        className="group flex items-center gap-2.5 rounded-full bg-[#25D366] p-3 text-white shadow-[0_4px_24px_rgba(37,211,102,0.4)] transition-all duration-300 hover:scale-[1.03] hover:bg-[#20ba59] hover:shadow-[0_6px_28px_rgba(37,211,102,0.55)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#25D366] focus-visible:ring-offset-2 active:scale-95 sm:px-4 sm:py-3"
+        className="group flex items-center justify-center rounded-full bg-[#25D366] p-3.5 text-white shadow-[0_4px_20px_rgba(37,211,102,0.38)] transition-all duration-300 ease-out hover:scale-110 hover:bg-[#20ba59] hover:px-4.5 hover:shadow-[0_8px_30px_rgba(37,211,102,0.55)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#25D366] focus-visible:ring-offset-2 active:scale-95"
       >
-        <WhatsAppIcon className="size-6 shrink-0 sm:size-6" />
-        <span className="hidden pr-1 font-sans text-xs font-medium tracking-wider uppercase md:inline-block">
+        <WhatsAppIcon className="size-6 shrink-0 transition-transform duration-300 group-hover:scale-105" />
+        <span className="max-w-0 overflow-hidden whitespace-nowrap text-sm font-semibold tracking-wide opacity-0 transition-all duration-300 ease-out group-hover:max-w-44 group-hover:pl-2 group-hover:opacity-100">
           Chat on WhatsApp
         </span>
       </a>

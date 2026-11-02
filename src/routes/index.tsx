@@ -123,10 +123,10 @@ function Index() {
           width={1600}
           height={1104}
           fetchPriority="high"
-          className="h-[42vh] w-full object-cover sm:h-[52vh] md:h-[78vh]"
+          className="h-[55vh] w-full object-cover sm:h-[65vh] md:h-[78vh]"
         />
-        <figure className="m-0 flex flex-col justify-center gap-5 bg-brand px-5 py-10 text-brand-foreground sm:gap-6 sm:px-8 sm:py-14 md:px-12">
-          <blockquote className="display text-xl leading-tight sm:text-2xl md:text-[2rem]">
+        <figure className="m-0 flex flex-col justify-center gap-6 bg-brand px-6 py-12 text-brand-foreground sm:px-10 sm:py-16 md:px-12 md:py-20">
+          <blockquote className="display text-xl leading-snug sm:text-2xl md:text-[2rem]">
             {featuredHero.quote.map((line) => (
               <span key={line} className="block">
                 {line}

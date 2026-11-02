@@ -1,5 +1,5 @@
 import { Link, useRouterState } from "@tanstack/react-router";
-import { Facebook, Instagram, Linkedin } from "lucide-react";
+import { Facebook, Globe, Instagram, Linkedin, Mail, Phone } from "lucide-react";
 import { useState } from "react";
 import { z } from "zod";
 
@@ -310,15 +310,23 @@ export function Footer() {
             </p>
           </div>
           <p className="mt-4 text-base leading-relaxed opacity-80">{company.tagline}</p>
-          <div className="mt-6 space-y-1.5 text-base opacity-80">
+          <div className="mt-6 space-y-2 text-base opacity-80">
             <p>
-              <a href={`mailto:${company.email}`} className="hover:opacity-60">
-                {company.email}
+              <a
+                href={`mailto:${company.email}`}
+                className="inline-flex items-center gap-2 hover:opacity-60"
+              >
+                <Mail className="size-4 shrink-0" />
+                <span>{company.email}</span>
               </a>
             </p>
             <p>
-              <a href={`tel:${company.phone}`} className="hover:opacity-60">
-                Tel: {company.phoneDisplay}
+              <a
+                href={`tel:${company.phone}`}
+                className="inline-flex items-center gap-2 hover:opacity-60"
+              >
+                <Phone className="size-4 shrink-0" />
+                <span>{company.phoneDisplay}</span>
               </a>
             </p>
             <p>
@@ -327,14 +335,21 @@ export function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 hover:opacity-60"
+                aria-label={`WhatsApp: ${company.whatsappDisplay}`}
               >
                 <WhatsAppIcon className="size-4 shrink-0 fill-current" />
-                <span>WhatsApp: {company.whatsappDisplay}</span>
+                <span>{company.whatsappDisplay}</span>
               </a>
             </p>
             <p>
-              <a href={company.websiteHref} className="hover:opacity-60">
-                {company.website}
+              <a
+                href={company.websiteHref}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 hover:opacity-60"
+              >
+                <Globe className="size-4 shrink-0" />
+                <span>{company.website}</span>
               </a>
             </p>
           </div>
