@@ -1,3 +1,4 @@
+
 import { Link, useRouterState } from "@tanstack/react-router";
 import { Facebook, Globe, Instagram, Linkedin, Mail, Phone } from "lucide-react";
 import { useState } from "react";
@@ -19,7 +20,6 @@ import {
   useValidatedForm,
 } from "@/components/site/use-validated-form";
 import { company, nav, socials, type SocialIcon } from "@/content/site";
-import { WhatsAppIcon } from "@/components/site/WhatsAppButton";
 
 const socialIcons: Record<SocialIcon, typeof Linkedin> = {
   linkedin: Linkedin,
@@ -327,18 +327,6 @@ export function Footer() {
               >
                 <Phone className="size-4 shrink-0" />
                 <span>{company.phoneDisplay}</span>
-              </a>
-            </p>
-            <p>
-              <a
-                href={company.whatsappHref}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 hover:opacity-60"
-                aria-label={`WhatsApp: ${company.whatsappDisplay}`}
-              >
-                <WhatsAppIcon className="size-4 shrink-0 fill-current" />
-                <span>{company.whatsappDisplay}</span>
               </a>
             </p>
             <p>
