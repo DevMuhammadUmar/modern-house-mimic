@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 
 import { CommunityCard } from "@/components/site/CommunityCard";
 import { PageHero, SectionBlock } from "@/components/site/sections";
+import { communities } from "@/content/site";
 import { buildBreadcrumbSchema, buildHead, SITE_URL, absoluteUrl } from "@/lib/seo";
 
 export const Route = createFileRoute("/communities")({
