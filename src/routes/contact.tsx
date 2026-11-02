@@ -18,14 +18,15 @@ import {
   useValidatedForm,
 } from "@/components/site/use-validated-form";
 import { company, inquiryTypes } from "@/content/site";
+import { WhatsAppIcon } from "@/components/site/WhatsAppButton";
 import { buildHead, SITE_URL } from "@/lib/seo";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
     ...buildHead({
-      title: "Contact Parkwood Properties | Dubai Real Estate Advisory",
+      title: "Contact Real Estate Advisors in Dubai | Parkwood Properties",
       description:
-        "Get in touch with Parkwood Properties in Dubai for property inquiries, advisory services, or appraisals. Our real estate team responds within one working day.",
+        "Connect with Parkwood Properties in Dubai for luxury residential purchases, off-plan investment guidance, or appraisals. Our team responds within one working day.",
       path: "/contact",
     }),
     scripts: [
@@ -34,20 +35,41 @@ export const Route = createFileRoute("/contact")({
         children: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "ContactPage",
-          name: "Contact Parkwood Properties",
+          name: "Contact Parkwood Properties Dubai",
           url: `${SITE_URL}/contact`,
           description:
-            "Get in touch with Parkwood Properties in Dubai for property inquiries, advisory services, or appraisals. Our real estate team responds within one working day.",
+            "Connect with Parkwood Properties in Dubai for luxury residential purchases, off-plan investment guidance, or appraisals.",
           mainEntity: {
             "@context": "https://schema.org",
-            "@type": "RealEstateAgent",
+            "@type": ["RealEstateAgent", "LocalBusiness"],
             name: company.name,
             url: SITE_URL,
+            telephone: company.phone,
             email: company.email,
+            contactPoint: [
+              {
+                "@type": "ContactPoint",
+                telephone: company.phone,
+                contactType: "customer service",
+                areaServed: "AE",
+              },
+              {
+                "@type": "ContactPoint",
+                telephone: company.whatsappNumber,
+                contactType: "WhatsApp Inquiries",
+                url: company.whatsappHref,
+                areaServed: ["AE", "Worldwide"],
+              },
+            ],
             address: {
               "@type": "PostalAddress",
               addressLocality: "Dubai",
               addressCountry: "AE",
+            },
+            geo: {
+              "@type": "GeoCoordinates",
+              latitude: 25.2048,
+              longitude: 55.2708,
             },
           },
         }),
@@ -161,10 +183,32 @@ function ContactPage() {
 
           <aside className="space-y-8">
             <div>
+              <h2 className="label text-muted-foreground">Office Phone</h2>
+              <p className="mt-3 text-base">
+                <a href={`tel:${company.phone}`} className="hover:opacity-60">
+                  {company.phoneDisplay}
+                </a>
+              </p>
+            </div>
+            <div>
               <h2 className="label text-muted-foreground">Email</h2>
               <p className="mt-3 text-base">
                 <a href={`mailto:${company.email}`} className="hover:opacity-60">
                   {company.email}
+                </a>
+              </p>
+            </div>
+            <div>
+              <h2 className="label text-muted-foreground">WhatsApp</h2>
+              <p className="mt-3 text-base">
+                <a
+                  href={company.whatsappHref}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 hover:opacity-60"
+                >
+                  <WhatsAppIcon className="size-4 text-[#25D366]" />
+                  <span>{company.whatsappDisplay}</span>
                 </a>
               </p>
             </div>
@@ -177,7 +221,6 @@ function ContactPage() {
               </p>
             </div>
           </aside>
-
         </div>
       </SectionBlock>
     </main>

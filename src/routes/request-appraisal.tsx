@@ -19,15 +19,21 @@ import {
   useValidatedForm,
 } from "@/components/site/use-validated-form";
 import { propertyTypes } from "@/content/site";
-import { buildHead, SITE_URL } from "@/lib/seo";
+import { buildBreadcrumbSchema, buildHead, SITE_URL } from "@/lib/seo";
 
 export const Route = createFileRoute("/request-appraisal")({
   head: () => ({
     ...buildHead({
-      title: "Property Valuation & Appraisal in Dubai | Parkwood Properties",
+      title: "Property Valuation & Real Estate Appraisal Dubai | Parkwood Properties",
       description:
         "Request an accurate sale or rental property appraisal in Dubai. Our advisors evaluate comparable market data to provide honest valuation guidance for your home.",
       path: "/request-appraisal",
+      schemas: [
+        buildBreadcrumbSchema([
+          { name: "Home", path: "/" },
+          { name: "Request Appraisal", path: "/request-appraisal" },
+        ]),
+      ],
     }),
     scripts: [
       {

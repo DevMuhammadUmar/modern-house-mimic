@@ -19,9 +19,15 @@ export const company = {
   name: "Parkwood Properties",
   tagline: "Built on Trust - Backed by Experience",
   email: "admin@parkwoodproperties.ae",
+  phone: "+971 4 399 0000",
+  phoneDisplay: "+971 4 399 0000",
   website: "www.parkwoodproperties.ae",
   websiteHref: "https://www.parkwoodproperties.ae",
   logo: "/logo.svg",
+  whatsappNumber: "+971 52 276 9564",
+  whatsappDisplay: "+971 52 276 9564",
+  whatsappHref:
+    "https://wa.me/971522769564?text=Hello%20Parkwood%20Properties%2C%20I%20would%20like%20to%20inquire%20about%20properties%20in%20Dubai.",
 };
 
 export const nav = [

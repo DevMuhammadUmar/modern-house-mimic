@@ -13,7 +13,8 @@ import appCss from "../styles.css?url";
 import { reportError } from "../lib/error-reporting";
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
-
+import { WhatsAppFloatingButton } from "@/components/site/WhatsAppButton";
+import { buildRealEstateAgentSchema } from "@/lib/seo";
 
 function NotFoundComponent() {
   return (
@@ -138,8 +139,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           alternateName: "Parkwood Properties",
           url: "https://parkwoodproperties.ae",
           description:
-            "Dubai property consultancy advising on homes across Emaar's masterplanned communities.",
+            "Dubai luxury homes and off-plan real estate advisory specializing in Emaar masterplanned communities.",
         }),
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify(buildRealEstateAgentSchema()),
       },
     ],
   }),
@@ -176,8 +181,8 @@ function RootComponent() {
           <Outlet />
         </div>
         <Footer />
+        <WhatsAppFloatingButton />
       </div>
     </QueryClientProvider>
   );
 }
-

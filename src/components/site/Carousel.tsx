@@ -5,13 +5,7 @@ import { useCallback, useEffect, useRef, useState, type ReactNode } from "react"
  * Horizontal scroll-snap carousel with left/right arrow controls.
  * Used for the Communities and Services rows on the home page.
  */
-export function Carousel({
-  label,
-  children,
-}: {
-  label: string;
-  children: ReactNode;
-}) {
+export function Carousel({ label, children }: { label: string; children: ReactNode }) {
   const trackRef = useRef<HTMLDivElement>(null);
   const [atStart, setAtStart] = useState(true);
   const [atEnd, setAtEnd] = useState(false);
@@ -76,7 +70,5 @@ export function Carousel({
 }
 
 export function CarouselItem({ children }: { children: ReactNode }) {
-  return (
-    <div className="w-[82%] shrink-0 snap-start sm:w-[46%] lg:w-[31.5%]">{children}</div>
-  );
+  return <div className="w-[82%] shrink-0 snap-start sm:w-[46%] lg:w-[31.5%]">{children}</div>;
 }

@@ -3,40 +3,71 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { Carousel, CarouselItem } from "@/components/site/Carousel";
 import { CommunityCard } from "@/components/site/CommunityCard";
 import { communities, company, featuredHero, services } from "@/content/site";
-import { buildHead, SITE_URL, absoluteUrl } from "@/lib/seo";
+import { buildFAQSchema, buildHead, SITE_URL, absoluteUrl } from "@/lib/seo";
+
+const homeFaqs = [
+  {
+    question: "Can foreign investors and non-residents purchase freehold property in Dubai?",
+    answer:
+      "Yes, foreign nationals and international buyers can purchase freehold properties with 100% foreign ownership in designated areas across Dubai, including Downtown Dubai, Dubai Hills Estate, The Oasis, and Dubai Creek Harbour.",
+  },
+  {
+    question: "What are the benefits of investing in off-plan property in Dubai?",
+    answer:
+      "Off-plan properties in Dubai typically feature attractive pre-launch pricing, flexible developer payment schedules, high capital appreciation during construction, and strong rental yields upon completion.",
+  },
+  {
+    question: "Does property purchase in Dubai qualify for the 10-Year UAE Golden Visa?",
+    answer:
+      "Yes, purchasing residential or off-plan real estate valued at AED 2,000,000 or more in Dubai enables investors and their families to apply for the renewable 10-Year UAE Golden Visa.",
+  },
+  {
+    question: "How does Parkwood Properties assist with secondary market buying and handover?",
+    answer:
+      "Parkwood Properties provides independent market pricing analysis, verified shortlisting, negotiation, and end-to-end handover management including snagging inspections and key handover with Emaar policies.",
+  },
+];
 
 export const Route = createFileRoute("/")({
   head: () => ({
     ...buildHead({
-      title: "Parkwood Properties Dubai",
+      title: "Dubai Luxury Homes & Off-Plan Investments | Parkwood Properties Dubai",
       description:
-        "Parkwood Properties Dubai is a premier real estate advisory specializing in buying, selling, leasing, mortgages, and property handover across Dubai's leading masterplanned communities.",
+        "Discover luxury villas, penthouses, and off-plan property investments across Dubai's top masterplanned communities with Parkwood Properties Dubai.",
       path: "/",
       image: absoluteUrl("/social.jpg"),
+      schemas: [buildFAQSchema(homeFaqs)],
     }),
     scripts: [
       {
         type: "application/ld+json",
         children: JSON.stringify({
           "@context": "https://schema.org",
-          "@type": "RealEstateAgent",
+          "@type": ["RealEstateAgent", "LocalBusiness"],
           "@id": "https://parkwoodproperties.ae/#organization",
           name: "Parkwood Properties Dubai",
           alternateName: "Parkwood Properties",
           description:
-            "Parkwood Properties Dubai is a premier property consultancy advising on homes across Emaar's masterplanned communities in Dubai.",
+            "Parkwood Properties Dubai is a premier property consultancy advising on luxury homes and off-plan investments across Emaar masterplanned communities in Dubai.",
           slogan: company.tagline,
           url: SITE_URL,
+          telephone: company.phone,
           email: company.email,
           image: absoluteUrl("/hero.jpeg"),
           logo: absoluteUrl("/logo.svg"),
+          priceRange: "AED 2,000,000 - AED 100,000,000+",
           address: {
             "@type": "PostalAddress",
             addressLocality: "Dubai",
             addressCountry: "AE",
           },
+          geo: {
+            "@type": "GeoCoordinates",
+            latitude: 25.2048,
+            longitude: 55.2708,
+          },
           areaServed: {
-            "@type": "AdministrativeArea",
+            "@type": "City",
             name: "Dubai",
           },
           sameAs: [
@@ -45,6 +76,10 @@ export const Route = createFileRoute("/")({
             "https://www.instagram.com/propertiesparkwood/",
           ],
         }),
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify(buildFAQSchema(homeFaqs)),
       },
     ],
   }),
@@ -78,6 +113,9 @@ function Section({
 function Index() {
   return (
     <main>
+      <h1 className="sr-only">
+        Dubai Luxury Homes & Off-Plan Property Investments | Parkwood Properties Dubai
+      </h1>
       <section className="grid md:grid-cols-[2fr_1fr]">
         <img
           src={featuredHero.image}
@@ -138,9 +176,9 @@ function Index() {
 
       <section className="border-t border-border px-5 py-16 sm:px-6 sm:py-20 md:px-10 md:py-28">
         <div className="mx-auto max-w-2xl text-center">
-          <h1 className="display text-2xl sm:text-3xl md:text-4xl">
+          <h2 className="display text-2xl sm:text-3xl md:text-4xl">
             Thinking of selling or leasing?
-          </h1>
+          </h2>
           <p className="mt-4 text-base leading-relaxed text-muted-foreground sm:mt-5 sm:text-lg">
             We photograph, write and place each home ourselves — and advise honestly on price before
             anything goes to market.

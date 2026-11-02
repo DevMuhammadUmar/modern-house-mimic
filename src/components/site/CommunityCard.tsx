@@ -23,17 +23,11 @@ export function CommunityCard({ community }: { community: Community }) {
         </div>
         <div className="mt-4 space-y-2">
           <h3 className="display text-xl">{community.name}</h3>
-          <p className="text-base leading-relaxed text-muted-foreground">
-            {community.description}
-          </p>
+          <p className="text-base leading-relaxed text-muted-foreground">{community.description}</p>
         </div>
       </Link>
       <div className="mt-3">
-        <Link
-          to="/communities/$slug"
-          params={{ slug: community.slug }}
-          className="btn-outline"
-        >
+        <Link to="/communities/$slug" params={{ slug: community.slug }} className="btn-outline">
           {community.ctaLabel ?? "Explore community"}
         </Link>
       </div>

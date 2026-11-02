@@ -9,19 +9,19 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-30 border-b border-border bg-background/95 backdrop-blur">
-      <nav className="mx-auto grid max-w-[1400px] grid-cols-[minmax(0,1fr)_auto] items-center gap-3 px-5 py-4 sm:gap-6 sm:px-6 md:flex md:justify-between md:px-10 md:py-5">
+      <nav className="mx-auto flex max-w-[1400px] items-center justify-between gap-4 px-5 py-4 sm:gap-6 sm:px-6 md:px-10 md:py-5">
         <Link
           to="/"
           aria-label={`${company.name} home`}
           onClick={() => setOpen(false)}
-          className="flex min-w-0 items-center gap-2 sm:gap-3"
+          className="flex min-w-0 shrink-0 items-center gap-2 sm:gap-3"
         >
           <img
             src={company.logo}
             alt="Parkwood Properties"
             width={816}
             height={816}
-            className="h-10 w-auto shrink-0 object-contain sm:h-12 md:h-16"
+            className="h-10 w-auto shrink-0 object-contain sm:h-12 md:h-14"
           />
           <span className="flex min-w-0 flex-col leading-tight">
             <span
@@ -64,13 +64,13 @@ export function Header() {
 
       {open ? (
         <div id="mobile-nav" className="border-t border-border md:hidden">
-          <ul className="mx-auto max-w-[1400px] px-5 py-2 sm:px-6">
+          <ul className="mx-auto max-w-[1400px] px-5 py-3 sm:px-6">
             {nav.map((item) => (
               <li key={item.to} className="border-b border-border last:border-0">
                 <Link
                   to={item.to}
                   onClick={() => setOpen(false)}
-                  className="label block py-4 hover:opacity-60"
+                  className="label block py-3.5 hover:opacity-60"
                 >
                   {item.label}
                 </Link>

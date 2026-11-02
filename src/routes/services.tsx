@@ -2,26 +2,50 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 
 import { PageHero, SectionBlock } from "@/components/site/sections";
 import { services } from "@/content/site";
-import { buildHead, SITE_URL } from "@/lib/seo";
+import { buildBreadcrumbSchema, buildHead, SITE_URL } from "@/lib/seo";
 
 export const Route = createFileRoute("/services")({
   head: () => ({
     ...buildHead({
-      title: "Real Estate Services in Dubai | Parkwood Properties",
+      title: "Real Estate Advisory & Property Services Dubai | Parkwood Properties",
       description:
-        "Comprehensive Dubai real estate services: property acquisition, sales marketing, residential leasing, independent mortgage advisory, and Emaar handover management.",
+        "Comprehensive Dubai real estate services: luxury property acquisition, sales marketing, residential leasing, independent mortgage advisory, and Emaar handover snagging.",
       path: "/services",
+      schemas: [
+        buildBreadcrumbSchema([
+          { name: "Home", path: "/" },
+          { name: "Services", path: "/services" },
+        ]),
+      ],
     }),
     scripts: [
       {
         type: "application/ld+json",
         children: JSON.stringify({
           "@context": "https://schema.org",
-          "@type": "WebPage",
-          name: "Real Estate Services in Dubai",
-          url: `${SITE_URL}/services`,
-          description:
-            "Comprehensive Dubai real estate services: property acquisition, sales marketing, residential leasing, independent mortgage advisory, and Emaar handover management.",
+          "@type": "Service",
+          serviceType: "Real Estate Advisory",
+          provider: {
+            "@type": "RealEstateAgent",
+            name: "Parkwood Properties Dubai",
+            url: SITE_URL,
+          },
+          areaServed: {
+            "@type": "City",
+            name: "Dubai",
+          },
+          hasOfferCatalog: {
+            "@type": "OfferCatalog",
+            name: "Dubai Real Estate Services",
+            itemListElement: services.map((s) => ({
+              "@type": "Offer",
+              itemOffered: {
+                "@type": "Service",
+                name: `${s.title} Real Estate Service Dubai`,
+                description: s.description,
+              },
+            })),
+          },
         }),
       },
     ],
@@ -51,14 +75,10 @@ function ServicesPage() {
                 loading="lazy"
                 width={1200}
                 height={900}
-                className={`aspect-[4/3] w-full object-cover ${
-                  i % 2 === 1 ? "md:order-2" : ""
-                }`}
+                className={`aspect-[4/3] w-full object-cover ${i % 2 === 1 ? "md:order-2" : ""}`}
               />
               <div>
-                <p className="label text-muted-foreground">
-                  {String(i + 1).padStart(2, "0")}
-                </p>
+                <p className="label text-muted-foreground">{String(i + 1).padStart(2, "0")}</p>
                 <h2 className="display mt-3 text-3xl md:text-4xl">{service.title}</h2>
                 <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
                   {service.description}

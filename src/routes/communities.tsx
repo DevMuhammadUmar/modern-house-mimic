@@ -2,16 +2,21 @@ import { createFileRoute } from "@tanstack/react-router";
 
 import { CommunityCard } from "@/components/site/CommunityCard";
 import { PageHero, SectionBlock } from "@/components/site/sections";
-import { communities } from "@/content/site";
-import { buildHead, SITE_URL } from "@/lib/seo";
+import { buildBreadcrumbSchema, buildHead, SITE_URL, absoluteUrl } from "@/lib/seo";
 
 export const Route = createFileRoute("/communities")({
   head: () => ({
     ...buildHead({
-      title: "Dubai Residential Communities & Masterplans | Parkwood Properties",
+      title: "Dubai Masterplanned Communities & Luxury Real Estate | Parkwood Properties",
       description:
-        "Explore premier Dubai residential masterplans including Downtown Dubai, Dubai Hills Estate, The Oasis, Dubai Creek Harbour, and Emaar Beachfront with expert community insights.",
+        "Explore premier Dubai residential masterplans: Downtown Dubai, Dubai Hills Estate, The Oasis, Dubai Creek Harbour, Arabian Ranches III, and Emaar Beachfront.",
       path: "/communities",
+      schemas: [
+        buildBreadcrumbSchema([
+          { name: "Home", path: "/" },
+          { name: "Communities", path: "/communities" },
+        ]),
+      ],
     }),
     scripts: [
       {
@@ -19,10 +24,19 @@ export const Route = createFileRoute("/communities")({
         children: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "CollectionPage",
-          name: "Dubai Residential Communities & Masterplans",
+          name: "Dubai Masterplanned Communities & Luxury Real Estate",
           url: `${SITE_URL}/communities`,
           description:
-            "Explore premier Dubai residential masterplans including Downtown Dubai, Dubai Hills Estate, The Oasis, Dubai Creek Harbour, and Emaar Beachfront with expert community insights.",
+            "Explore premier Dubai residential masterplans: Downtown Dubai, Dubai Hills Estate, The Oasis, Dubai Creek Harbour, Arabian Ranches III, and Emaar Beachfront.",
+          mainEntity: {
+            "@type": "ItemList",
+            itemListElement: communities.map((c, idx) => ({
+              "@type": "ListItem",
+              position: idx + 1,
+              name: c.name,
+              url: absoluteUrl(`/communities/${c.slug}`),
+            })),
+          },
         }),
       },
     ],

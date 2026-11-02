@@ -1,15 +1,21 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 
 import { about, company } from "@/content/site";
-import { buildHead, SITE_URL } from "@/lib/seo";
+import { buildBreadcrumbSchema, buildHead, SITE_URL } from "@/lib/seo";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
     ...buildHead({
-      title: "About Us | Parkwood Properties Dubai",
+      title: "About Us | Dubai Real Estate Consultancy | Parkwood Properties",
       description:
         "Learn about Parkwood Properties, a Dubai real estate consultancy specializing in secondary market residential property across Emaar's masterplanned communities.",
       path: "/about",
+      schemas: [
+        buildBreadcrumbSchema([
+          { name: "Home", path: "/" },
+          { name: "About Us", path: "/about" },
+        ]),
+      ],
     }),
     scripts: [
       {
@@ -60,7 +66,9 @@ function AboutPage() {
         </div>
         <div className="flex flex-col justify-center gap-5 bg-accent px-6 py-12 sm:gap-6 sm:px-10 sm:py-16 md:px-14">
           <p className="label self-start border-b border-foreground/30 pb-2">{about.hero.kicker}</p>
-          <h1 className="display text-2xl sm:text-3xl md:text-[2.4rem] leading-tight">{about.hero.title}</h1>
+          <h1 className="display text-2xl sm:text-3xl md:text-[2.4rem] leading-tight">
+            {about.hero.title}
+          </h1>
           <p className="max-w-sm text-base leading-relaxed text-muted-foreground sm:text-lg">
             {about.hero.body}
           </p>
@@ -75,7 +83,10 @@ function AboutPage() {
           </h2>
           <div className="grid gap-8 md:grid-cols-3 md:gap-12">
             {about.intro.body.map((p, i) => (
-              <p key={i} className="text-base leading-relaxed text-muted-foreground sm:text-lg border-t border-border pt-6">
+              <p
+                key={i}
+                className="text-base leading-relaxed text-muted-foreground sm:text-lg border-t border-border pt-6"
+              >
                 {p}
               </p>
             ))}
@@ -112,11 +123,15 @@ function AboutPage() {
       {/* ── How We Work ── */}
       <section className="border-t border-border px-6 py-16 sm:px-8 sm:py-20 md:px-10 md:py-28">
         <div className="mx-auto max-w-[1400px]">
-          <h2 className="display mb-12 text-center text-2xl sm:text-3xl md:text-4xl">How we work</h2>
+          <h2 className="display mb-12 text-center text-2xl sm:text-3xl md:text-4xl">
+            How we work
+          </h2>
           <div className="grid gap-0 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-border">
             {about.values.map((v, i) => (
               <div key={v.title} className="py-8 md:py-0 md:px-10 first:md:pl-0 last:md:pr-0">
-                <span className="display text-4xl text-foreground/10 font-medium block mb-4">0{i + 1}</span>
+                <span className="display text-4xl text-foreground/10 font-medium block mb-4">
+                  0{i + 1}
+                </span>
                 <h3 className="display text-xl md:text-2xl mb-3">{v.title}</h3>
                 <p className="text-base leading-relaxed text-muted-foreground">{v.body}</p>
               </div>

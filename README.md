@@ -4,15 +4,15 @@ Real-estate website for **[Park Wood Properties](https://parkwoodproperties.ae)*
 
 ## Stack
 
-| Layer | Technology |
-|---|---|
-| Framework | [TanStack Start](https://tanstack.com/start) (file-based SSR routing) |
-| Build | [Vite](https://vitejs.dev) via `@lovable.dev/vite-tanstack-config` |
-| Runtime | [Bun](https://bun.sh) |
-| Styling | [Tailwind CSS v4](https://tailwindcss.com) |
+| Layer         | Technology                                                            |
+| ------------- | --------------------------------------------------------------------- |
+| Framework     | [TanStack Start](https://tanstack.com/start) (file-based SSR routing) |
+| Build         | [Vite](https://vitejs.dev) via `@lovable.dev/vite-tanstack-config`    |
+| Runtime       | [Bun](https://bun.sh)                                                 |
+| Styling       | [Tailwind CSS v4](https://tailwindcss.com)                            |
 | UI primitives | [Radix UI](https://radix-ui.com) + [shadcn/ui](https://ui.shadcn.com) |
-| Language | TypeScript |
-| Deploy target | Cloudflare Workers (Nitro adapter) |
+| Language      | TypeScript                                                            |
+| Deploy target | Cloudflare Workers (Nitro adapter)                                    |
 
 ## Local development
 

@@ -45,14 +45,18 @@ export const Route = createFileRoute("/communities_/$slug")({
     const rawParagraph = community.overview.paragraphs[0] ?? "";
     const description =
       rawParagraph.length > 155
-        ? `${rawParagraph.slice(0, 152).trim().replace(/[.,;!?]$/, "")}…`
-        : rawParagraph || `${community.name} — premier Dubai masterplanned community guide by Parkwood Properties.`;
-    const title = `${community.name} Community Guide | Parkwood Properties Dubai`;
+        ? `${rawParagraph
+            .slice(0, 152)
+            .trim()
+            .replace(/[.,;!?]$/, "")}…`
+        : rawParagraph ||
+          `${community.name} — premier Dubai masterplanned community guide by Parkwood Properties.`;
+    const title = `${community.name} Luxury Properties & Community Guide | Parkwood Properties Dubai`;
     const communityUrl = absoluteUrl(`/communities/${community.slug}`);
     const shareImage = community.heroImage ? absoluteUrl(community.heroImage) : DEFAULT_OG_IMAGE;
     return {
       meta: [
-        { title: SITE_NAME },
+        { title },
         { name: "description", content: description },
         { property: "og:title", content: title },
         { property: "og:description", content: description },
@@ -75,7 +79,12 @@ export const Route = createFileRoute("/communities_/$slug")({
             "@type": "BreadcrumbList",
             itemListElement: [
               { "@type": "ListItem", position: 1, name: "Home", item: `${SITE_URL}/` },
-              { "@type": "ListItem", position: 2, name: "Communities", item: absoluteUrl("/communities") },
+              {
+                "@type": "ListItem",
+                position: 2,
+                name: "Communities",
+                item: absoluteUrl("/communities"),
+              },
               {
                 "@type": "ListItem",
                 position: 3,
@@ -83,6 +92,23 @@ export const Route = createFileRoute("/communities_/$slug")({
                 item: communityUrl,
               },
             ],
+          }),
+        },
+        {
+          type: "application/ld+json",
+          children: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Place",
+            name: `${community.name}, Dubai`,
+            description,
+            url: communityUrl,
+            image: shareImage,
+            address: {
+              "@type": "PostalAddress",
+              addressLocality: "Dubai",
+              addressRegion: "Dubai",
+              addressCountry: "AE",
+            },
           }),
         },
       ],
@@ -123,7 +149,9 @@ function CommunityDetailPage() {
             Back to communities
           </Link>
 
-          <h1 className="display mt-6 font-medium text-2xl sm:mt-8 sm:text-3xl md:text-[2.6rem]">{community.name}</h1>
+          <h1 className="display mt-6 font-medium text-2xl sm:mt-8 sm:text-3xl md:text-[2.6rem]">
+            {community.name}
+          </h1>
 
           <div className="mt-10 max-w-full space-y-5">
             {community.overview.paragraphs.map((p: string) => (
@@ -159,7 +187,9 @@ function CommunityDetailPage() {
           <div className="mx-auto max-w-[1400px]">
             <div className="max-w-full space-y-5">
               {community.overview.restHeading && (
-                <h2 className="display uppercase mt-2 mb-8 text-2xl sm:text-3xl md:text-4xl">{community.overview.restHeading}</h2>
+                <h2 className="display uppercase mt-2 mb-8 text-2xl sm:text-3xl md:text-4xl">
+                  {community.overview.restHeading}
+                </h2>
               )}
               {community.overview.restParagraphs?.map((p: string) => (
                 <p key={p} className="text-base leading-relaxed text-muted-foreground sm:text-lg">
@@ -189,9 +219,7 @@ function CommunityDetailPage() {
                 <div
                   key={`${stat.label}-${stat.value}`}
                   className={`flex flex-col gap-3 p-6 ${
-                    stat.highlighted
-                      ? "bg-foreground text-background"
-                      : "bg-background"
+                    stat.highlighted ? "bg-foreground text-background" : "bg-background"
                   }`}
                 >
                   <Icon className="size-5" aria-hidden="true" />
@@ -213,9 +241,7 @@ function CommunityDetailPage() {
 
       <SectionBlock>
         <div className="flex flex-wrap items-center justify-between gap-6">
-          <p className="display text-xl sm:text-2xl md:text-3xl">
-            Interested in {community.name}?
-          </p>
+          <p className="display text-xl sm:text-2xl md:text-3xl">Interested in {community.name}?</p>
           <div className="flex flex-wrap gap-3 sm:gap-4">
             <Link to="/contact" className="btn-outline">
               Talk to us

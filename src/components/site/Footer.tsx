@@ -19,6 +19,7 @@ import {
   useValidatedForm,
 } from "@/components/site/use-validated-form";
 import { company, nav, socials, type SocialIcon } from "@/content/site";
+import { WhatsAppIcon } from "@/components/site/WhatsAppButton";
 
 const socialIcons: Record<SocialIcon, typeof Linkedin> = {
   linkedin: Linkedin,
@@ -152,7 +153,10 @@ function FeedbackDialog({
           <DialogTitle className="display text-2xl">Tell us what you think</DialogTitle>
         </DialogHeader>
         {form.done ? (
-          <FormSuccess title="Thank you" body="Your feedback has been received — we read every note." />
+          <FormSuccess
+            title="Thank you"
+            body="Your feedback has been received — we read every note."
+          />
         ) : (
           <form
             name="feedback"
@@ -306,10 +310,26 @@ export function Footer() {
             </p>
           </div>
           <p className="mt-4 text-base leading-relaxed opacity-80">{company.tagline}</p>
-          <div className="mt-6 space-y-1 text-base opacity-80">
+          <div className="mt-6 space-y-1.5 text-base opacity-80">
             <p>
               <a href={`mailto:${company.email}`} className="hover:opacity-60">
                 {company.email}
+              </a>
+            </p>
+            <p>
+              <a href={`tel:${company.phone}`} className="hover:opacity-60">
+                Tel: {company.phoneDisplay}
+              </a>
+            </p>
+            <p>
+              <a
+                href={company.whatsappHref}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 hover:opacity-60"
+              >
+                <WhatsAppIcon className="size-4 shrink-0 fill-current" />
+                <span>WhatsApp: {company.whatsappDisplay}</span>
               </a>
             </p>
             <p>
